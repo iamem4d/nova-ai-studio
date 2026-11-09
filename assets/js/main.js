@@ -1,4 +1,9 @@
 
+// =============================================
+// NOVA AI STUDIO - MAIN JAVASCRIPT
+// Multilingual system + Contact form + Mobile menu
+// =============================================
+
 const translations = {
   en: {
     nav_services: "Services",
@@ -216,98 +221,9 @@ const translations = {
   }
 };
 
-const languageSelect = document.getElementById("languageSelect");
-
-function setLanguage(language) {
-  const selectedLanguage = translations[language] ? language : "en";
-  const dictionary = translations[selectedLanguage];
-
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.dataset.i18n;
-
-    if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
-      element.innerHTML = dictionary[key];
-    }
-  });
-
-  document.documentElement.lang = selectedLanguage;
-  document.documentElement.dir = selectedLanguage === "ar" ? "rtl" : "ltr";
-
-  if (languageSelect) {
-    languageSelect.value = selectedLanguage;
-  }
-
-  try {
-    localStorage.setItem("nova-language", selectedLanguage);
-  } catch (error) {
-    // The site still works if browser storage is unavailable.
-  }
-}
-
-if (languageSelect) {
-  languageSelect.addEventListener("change", (event) => {
-    setLanguage(event.target.value);
-  });
-}
-
-let savedLanguage = "en";
-
-try {
-  savedLanguage = localStorage.getItem("nova-language") || "en";
-} catch (error) {
-  savedLanguage = "en";
-}
-
-setLanguage(savedLanguage);
-
-// Mobile navigation
-const menuToggle = document.getElementById("menuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-
-if (menuToggle && mobileMenu) {
-  function closeMobileMenu() {
-    mobileMenu.classList.remove("open");
-    menuToggle.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
-
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.toggle("open");
-
-    menuToggle.classList.toggle("active", isOpen);
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMobileMenu);
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeMobileMenu();
-    }
-  });
-
-  document.addEventListener("click", (event) => {
-    if (
-      !mobileMenu.contains(event.target) &&
-      !menuToggle.contains(event.target)
-    ) {
-      closeMobileMenu();
-    }
-  });
-}
-
-// Automatic footer year
-const yearElement = document.getElementById("year");
-
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-}
-
-// =====================================
-// NOVA CONTACT FORM TRANSLATIONS
-// =====================================
+// =============================================
+// CONTACT FORM TRANSLATIONS
+// =============================================
 
 const formTranslations = {
   en: {
@@ -426,6 +342,12 @@ const formTranslations = {
   }
 };
 
+// =============================================
+// LANGUAGE SYSTEM
+// =============================================
+
+const languageSelect = document.getElementById("languageSelect");
+
 function updateContactFormLanguage(language) {
   const t = formTranslations[language] || formTranslations.en;
 
@@ -449,7 +371,7 @@ function updateContactFormLanguage(language) {
   setPlaceholder("#contact-email", t.emailPlaceholder);
   setPlaceholder("#contact-message", t.messagePlaceholder);
 
-  const options = {
+  const serviceOptions = {
     "": t.servicePlaceholder,
     "AI Tools & Prototypes": t.ai,
     "Websites & Experiences": t.web,
@@ -461,8 +383,8 @@ function updateContactFormLanguage(language) {
 
   if (serviceSelect) {
     Array.from(serviceSelect.options).forEach(option => {
-      if (options[option.value]) {
-        option.textContent = options[option.value];
+      if (Object.prototype.hasOwnProperty.call(serviceOptions, option.value)) {
+        option.textContent = serviceOptions[option.value];
       }
     });
   }
@@ -480,7 +402,7 @@ function updateContactFormLanguage(language) {
 
   if (budgetSelect) {
     Array.from(budgetSelect.options).forEach(option => {
-      if (budgetOptions[option.value]) {
+      if (Object.prototype.hasOwnProperty.call(budgetOptions, option.value)) {
         option.textContent = budgetOptions[option.value];
       }
     });
@@ -489,13 +411,97 @@ function updateContactFormLanguage(language) {
   setText(".contact-form button", t.button);
 }
 
-// Connect form translations to the existing language system
-const originalSetLanguage = setLanguage;
+function setLanguage(language) {
+  const selectedLanguage = translations[language] ? language : "en";
+  const dictionary = translations[selectedLanguage];
 
-setLanguage = function(language) {
-  originalSetLanguage(language);
-  updateContactFormLanguage(language);
-};
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.dataset.i18n;
 
-// Apply translations immediately on page load
-updateContactFormLanguage(document.documentElement.lang || "en");
+    if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+      element.innerHTML = dictionary[key];
+    }
+  });
+
+  document.documentElement.lang = selectedLanguage;
+  document.documentElement.dir = selectedLanguage === "ar" ? "rtl" : "ltr";
+
+  if (languageSelect) {
+    languageSelect.value = selectedLanguage;
+  }
+
+  updateContactFormLanguage(selectedLanguage);
+
+  try {
+    localStorage.setItem("nova-language", selectedLanguage);
+  } catch (error) {
+    // Storage may be unavailable in some browsers.
+  }
+}
+
+if (languageSelect) {
+  languageSelect.addEventListener("change", event => {
+    setLanguage(event.target.value);
+  });
+}
+
+let savedLanguage = "en";
+
+try {
+  savedLanguage = localStorage.getItem("nova-language") || "en";
+} catch (error) {
+  savedLanguage = "en";
+}
+
+setLanguage(savedLanguage);
+
+// =============================================
+// MOBILE NAVIGATION
+// =============================================
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (menuToggle && mobileMenu) {
+  function closeMobileMenu() {
+    mobileMenu.classList.remove("open");
+    menuToggle.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("open");
+
+    menuToggle.classList.toggle("active", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener("click", event => {
+    if (
+      !mobileMenu.contains(event.target) &&
+      !menuToggle.contains(event.target)
+    ) {
+      closeMobileMenu();
+    }
+  });
+}
+
+// =============================================
+// AUTOMATIC FOOTER YEAR
+// =============================================
+
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
