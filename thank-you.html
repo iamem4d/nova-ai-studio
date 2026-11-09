@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b14">
+  <title>Thank You | Nova AI Studio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 40%, #102c3b 0%, transparent 45%),
+        #070b14;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 580px;
+      padding: 55px 35px;
+      text-align: center;
+      background: rgba(15, 25, 40, 0.78);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: 24px;
+      box-shadow: 0 0 60px rgba(0, 229, 255, 0.09);
+      backdrop-filter: blur(18px);
+      animation: appear 0.7s ease;
+    }
+
+    .check {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #00e5ff;
+      border: 2px solid #00e5ff;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+      font-size: 42px;
+    }
+
+    .brand {
+      color: #00e5ff;
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(28px, 6vw, 42px);
+      margin-bottom: 18px;
+    }
+
+    p {
+      color: #aab8c8;
+      line-height: 1.8;
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .home {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 10px;
+      background: #00d5e8;
+      color: #061019;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.25s;
+    }
+
+    .home:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+    }
+
+    .language {
+      margin-top: 30px;
+      background: #111e2c;
+      color: #d8e8f2;
+      border: 1px solid #284052;
+      border-radius: 8px;
+      padding: 9px 12px;
+      outline: none;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 40px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <div class="check">✓</div>
+
+    <div class="brand">NOVA AI STUDIO</div>
+
+    <h1 id="title">Message Sent Successfully!</h1>
+
+    <p id="message">
+      Thank you for contacting us. Your message has been received.
+      We'll review your request and get back to you soon.
+    </p>
+
+    <a class="home" id="home" href="index.html">
+      Back to Homepage →
+    </a>
+
+    <br>
+
+    <select class="language" id="language">
+      <option value="en">English</option>
+      <option value="ar">العربية</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="zh">中文</option>
+    </select>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        title: "Message Sent Successfully!",
+        message: "Thank you for contacting us. Your message has been received. We'll review your request and get back to you soon.",
+        home: "Back to Homepage →"
+      },
+      ar: {
+        title: "تم إرسال رسالتك بنجاح!",
+        message: "شكراً لتواصلك معنا. لقد استلمنا رسالتك وسنراجع طلبك ونتواصل معك قريباً.",
+        home: "العودة إلى الصفحة الرئيسية ←"
+      },
+      fr: {
+        title: "Message envoyé avec succès !",
+        message: "Merci de nous avoir contactés. Votre message a bien été reçu. Nous examinerons votre demande et vous répondrons bientôt.",
+        home: "Retour à l'accueil →"
+      },
+      de: {
+        title: "Nachricht erfolgreich gesendet!",
+        message: "Vielen Dank für Ihre Nachricht. Wir haben sie erhalten und werden Ihre Anfrage prüfen und uns bald bei Ihnen melden.",
+        home: "Zurück zur Startseite →"
+      },
+      zh: {
+        title: "消息发送成功！",
+        message: "感谢您联系我们。我们已收到您的消息，将审核您的请求并尽快回复您。",
+        home: "返回主页 →"
+      }
+    };
+
+    const language = document.getElementById("language");
+
+    function setLanguage(lang) {
+      const t = translations[lang] || translations.en;
+
+      document.getElementById("title").textContent = t.title;
+      document.getElementById("message").textContent = t.message;
+      document.getElementById("home").textContent = t.home;
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      language.value = lang;
+    }
+
+    language.addEventListener("change", () => {
+      setLanguage(language.value);
+    });
+
+    setLanguage("en");
+  </script>
+</body>
+</html>
