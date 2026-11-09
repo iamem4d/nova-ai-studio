@@ -1,81 +1,252 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Nova AI Studio builds useful AI tools, modern websites and workflow automation for ambitious teams.">
-  <meta name="theme-color" content="#070b12">
-  <title>Nova AI Studio — Build Beyond</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d16">
+  <meta name="description" content="Nova AI Studio builds useful AI tools, modern websites and smart digital experiences.">
+  <title>Nova AI Studio | AI & Digital Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
 </head>
+
 <body>
-  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <div class="page-glow page-glow-one"></div>
+  <div class="page-glow page-glow-two"></div>
+
   <header class="site-header">
-    <a class="brand" href="#home" aria-label="Nova AI Studio home">
-      <span class="brand-mark">N<span>✦</span></span><span>NOVA<span class="brand-light"> AI STUDIO</span></span>
-    </a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#services" data-i18n="nav_services">Services</a>
-      <a href="#work" data-i18n="nav_work">Our Work</a>
-      <a href="#about" data-i18n="nav_about">About</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <label class="language-picker">
-        <span class="sr-only">Choose language</span>
-        <select id="languageSelect" aria-label="Choose language">
-          <option value="en">EN</option><option value="ar">العربية</option>
-          <option value="fr">FR</option><option value="de">DE</option><option value="zh">中文</option>
-        </select>
-      </label>
-      <a class="button button-small button-outline" href="#contact" data-i18n="nav_start">Let's talk ↗</a>
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Nova AI Studio home">
+        <span class="brand-mark">N<span>.</span></span>
+        <span class="brand-name">NOVA <strong>AI STUDIO</strong></span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#work" data-i18n="nav_work">Our Work</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="language-label">
+          <span class="sr-only">Language</span>
+          <select id="languageSelect" aria-label="Select language">
+            <option value="en">EN</option>
+            <option value="ar">العربية</option>
+            <option value="fr">FR</option>
+            <option value="de">DE</option>
+            <option value="zh">中文</option>
+          </select>
+        </label>
+
+        <a class="button button-small button-outline" href="#contact" data-i18n="nav_start">Let's talk ↗</a>
+
+        <button class="menu-toggle" id="menuToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#work" data-i18n="nav_work">Our Work</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <a href="#contact" data-i18n="nav_start">Let's talk ↗</a>
+      </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero section-wrap" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">INDEPENDENT AI & DIGITAL STUDIO</span></div>
-        <h1 data-i18n="hero_title">Build <span class="gradient-text">beyond</span><br>what's possible.</h1>
-        <p class="hero-lead" data-i18n="hero_desc">We turn ambitious ideas into useful AI tools, smart websites and streamlined digital experiences.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#contact" data-i18n="hero_cta">Start a project <span>↗</span></a>
-          <a class="text-link" href="#work" data-i18n="hero_secondary">Explore our work <span>↓</span></a>
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span class="status-dot"></span>
+            <span data-i18n="eyebrow">INDEPENDENT AI & DIGITAL STUDIO</span>
+          </div>
+
+          <h1 data-i18n="hero_title">
+            Build <span class="gradient-text">beyond</span><br>what's possible.
+          </h1>
+
+          <p class="hero-description" data-i18n="hero_desc">
+            We turn ambitious ideas into useful AI tools, smart websites and streamlined digital experiences.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#contact" data-i18n="hero_cta">Start a project</a>
+            <a class="button button-ghost" href="#work" data-i18n="hero_secondary">Explore our work <span>↗</span></a>
+          </div>
+
+          <div class="hero-note">
+            <span class="note-line"></span>
+            <p data-i18n="hero_note">Small studio. Thoughtful solutions.<br>Real-world impact.</p>
+          </div>
         </div>
-        <div class="hero-note"><span class="note-line"></span><span data-i18n="hero_note">Small studio. Thoughtful solutions. Real-world impact.</span></div>
+
+        <div class="hero-visual" aria-label="Abstract digital artwork">
+          <div class="visual-orbit orbit-one"></div>
+          <div class="visual-orbit orbit-two"></div>
+          <div class="visual-orbit orbit-three"></div>
+          <div class="visual-core">
+            <span>N</span>
+            <small>AI</small>
+          </div>
+          <div class="visual-tag visual-tag-one"><span></span> INTELLIGENCE</div>
+          <div class="visual-tag visual-tag-two">DIGITAL / 001</div>
+          <div class="visual-cross cross-one">+</div>
+          <div class="visual-cross cross-two">+</div>
+        </div>
       </div>
-      <div class="hero-art" aria-label="Abstract digital neural network illustration">
-        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-        <div class="core"><span>N</span><i></i></div>
-        <div class="node node-a"></div><div class="node node-b"></div><div class="node node-c"></div>
-        <div class="art-label label-top">AI / SYSTEMS</div><div class="art-label label-bottom">IDEAS → IMPACT</div>
-        <div class="grid-floor"></div>
+
+      <div class="container hero-bottom">
+        <span data-i18n="strip">IDEAS MADE USEFUL</span>
+        <span class="bottom-line"></span>
+        <span>EST. 2026</span>
       </div>
     </section>
 
-    <section class="trust-strip"><span data-i18n="strip">IDEAS MADE USEFUL</span><i></i><span>AI DEVELOPMENT</span><i></i><span>DIGITAL DESIGN</span><i></i><span>SMART AUTOMATION</span></section>
+    <section class="section services-section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker" data-i18n="services_kicker">WHAT WE DO</span>
+            <h2 data-i18n="services_title">Technology with <span class="gradient-text">purpose.</span></h2>
+          </div>
+          <p data-i18n="services_desc">Practical digital services designed to make work simpler, faster and more effective.</p>
+        </div>
 
-    <section class="content-section section-wrap" id="services">
-      <div class="section-heading"><div><div class="eyebrow" data-i18n="services_kicker">WHAT WE DO</div><h2 data-i18n="services_title">Technology with <span class="gradient-text">purpose.</span></h2></div><p data-i18n="services_desc">Practical digital services designed to make work simpler, faster and more effective.</p></div>
-      <div class="service-grid">
-        <article class="service-card"><div class="card-icon">✳</div><div class="card-number">01 / AI</div><h3 data-i18n="service1_title">AI Tools & Prototypes</h3><p data-i18n="service1_desc">Custom AI-powered tools, assistants and prototypes that solve focused problems.</p><a href="#contact" class="card-link" data-i18n="card_link">Discuss a project ↗</a></article>
-        <article class="service-card"><div class="card-icon">⌘</div><div class="card-number">02 / WEB</div><h3 data-i18n="service2_title">Websites & Experiences</h3><p data-i18n="service2_desc">Responsive, modern websites that explain your value and help people take action.</p><a href="#contact" class="card-link" data-i18n="card_link">Discuss a project ↗</a></article>
-        <article class="service-card"><div class="card-icon">⤢</div><div class="card-number">03 / FLOW</div><h3 data-i18n="service3_title">Workflow Automation</h3><p data-i18n="service3_desc">Connect repetitive tasks into clear workflows and spend more time on meaningful work.</p><a href="#contact" class="card-link" data-i18n="card_link">Discuss a project ↗</a></article>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">✳</div>
+            <span class="card-number">01 / AI</span>
+            <h3 data-i18n="service1_title">AI Tools & Prototypes</h3>
+            <p data-i18n="service1_desc">Custom AI-powered tools, assistants and prototypes that solve focused problems.</p>
+            <a href="#contact" class="card-link" data-i18n="card_link">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⌘</div>
+            <span class="card-number">02 / WEB</span>
+            <h3 data-i18n="service2_title">Websites & Experiences</h3>
+            <p data-i18n="service2_desc">Responsive, modern websites that explain your value and help people take action.</p>
+            <a href="#contact" class="card-link" data-i18n="card_link">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⟳</div>
+            <span class="card-number">03 / FLOW</span>
+            <h3 data-i18n="service3_title">Workflow Automation</h3>
+            <p data-i18n="service3_desc">Connect repetitive tasks into clear workflows and spend more time on meaningful work.</p>
+            <a href="#contact" class="card-link" data-i18n="card_link">Discuss a project ↗</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="work-section" id="work"><div class="section-wrap">
-      <div class="section-heading"><div><div class="eyebrow" data-i18n="work_kicker">SELECTED CONCEPTS</div><h2 data-i18n="work_title">Ideas in <span class="gradient-text">progress.</span></h2></div><p data-i18n="work_desc">A preview of the kinds of digital products we aim to create. Concept projects will be replaced with completed client work.</p></div>
-      <div class="work-grid">
-        <article class="work-card work-wide"><div class="work-visual visual-assistant"><div class="mini-window"><div class="window-dots">● ● ●</div><div class="chat-line short"></div><div class="chat-line"></div><div class="chat-answer">✦ <span>How can I help your team today?</span></div><div class="chat-line medium"></div></div></div><div class="work-meta"><div><span class="tag">AI CONCEPT</span><h3 data-i18n="work1_title">Customer Support Assistant</h3></div><span class="work-arrow">↗</span></div></article>
-        <article class="work-card"><div class="work-visual visual-dashboard"><div class="dash-card"><span>WORKFLOW</span><b>+38%</b><small>TIME SAVED</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="work-meta"><div><span class="tag">AUTOMATION CONCEPT</span><h3 data-i18n="work2_title">Smart Workflow Dashboard</h3></div><span class="work-arrow">↗</span></div></article>
+    <section class="section work-section" id="work">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker" data-i18n="work_kicker">SELECTED CONCEPTS</span>
+            <h2 data-i18n="work_title">Ideas in <span class="gradient-text">progress.</span></h2>
+          </div>
+          <p data-i18n="work_desc">A preview of the kinds of digital products we aim to create. Concept projects will be replaced with completed client work.</p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <div class="work-art work-art-one">
+              <div class="mock-window">
+                <div class="mock-top"><i></i><i></i><i></i><span>AI / SUPPORT</span></div>
+                <div class="mock-chat">
+                  <div class="mock-message"></div>
+                  <div class="mock-message short"></div>
+                  <div class="mock-reply">Hello! How can I help?</div>
+                  <div class="mock-message medium"></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-info">
+              <span>CONCEPT / 001</span>
+              <h3 data-i18n="work1_title">Customer Support Assistant</h3>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-art work-art-two">
+              <div class="dashboard">
+                <div class="dashboard-side"></div>
+                <div class="dashboard-main">
+                  <div class="dashboard-title"></div>
+                  <div class="dashboard-stats"><i></i><i></i><i></i></div>
+                  <div class="dashboard-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="work-info">
+              <span>CONCEPT / 002</span>
+              <h3 data-i18n="work2_title">Smart Workflow Dashboard</h3>
+            </div>
+          </article>
+        </div>
       </div>
-    </div></section>
+    </section>
 
-    <section class="about-section section-wrap" id="about"><div class="about-visual"><div class="about-orb">N<span>✦</span></div><div class="about-caption">CURIOSITY / CRAFT / CLARITY</div></div><div class="about-copy"><div class="eyebrow" data-i18n="about_kicker">A LITTLE ABOUT US</div><h2 data-i18n="about_title">Built on curiosity.<br><span class="gradient-text">Driven by usefulness.</span></h2><p data-i18n="about_desc">Nova AI Studio is an independent digital studio exploring how thoughtful design and accessible technology can solve everyday business problems. We value clear communication, useful outcomes and continuous learning.</p><div class="principles"><div><b>01</b><span data-i18n="principle1">Keep it clear</span></div><div><b>02</b><span data-i18n="principle2">Build with purpose</span></div><div><b>03</b><span data-i18n="principle3">Improve continuously</span></div></div></div></section>
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div class="about-frame">
+            <div class="about-symbol">N<span>.</span></div>
+            <span class="frame-label">NOVA / DIGITAL THINKING</span>
+            <span class="frame-coordinate">27° / 61°</span>
+          </div>
+        </div>
 
-    <section class="contact-section" id="contact"><div class="section-wrap contact-inner"><div><div class="eyebrow" data-i18n="contact_kicker">HAVE AN IDEA?</div><h2 data-i18n="contact_title">Let's make it <span class="gradient-text">real.</span></h2><p data-i18n="contact_desc">Tell us what you're thinking. We'll explore a practical way to move it forward.</p></div><div class="contact-panel"><div class="contact-status"><span class="pulse"></span><span data-i18n="contact_status">OPEN TO PROJECT INQUIRIES</span></div><p data-i18n="contact_placeholder">Add your preferred public contact email or project form here before launch.</p><a class="button button-primary" href="mailto:hello@example.com?subject=Project%20inquiry%20-%20Nova%20AI%20Studio" data-i18n="contact_button">Email Nova AI Studio ↗</a><small data-i18n="contact_edit">Replace hello@example.com with an email address you are authorized to use.</small></div></div></section>
+        <div class="about-content">
+          <span class="section-kicker" data-i18n="about_kicker">A LITTLE ABOUT US</span>
+          <h2 data-i18n="about_title">Built on curiosity.<br><span class="gradient-text">Driven by usefulness.</span></h2>
+          <p data-i18n="about_desc">Nova AI Studio is an independent digital studio exploring how thoughtful design and accessible technology can solve everyday business problems. We value clear communication, useful outcomes and continuous learning.</p>
+
+          <div class="principles">
+            <div><span>01</span><strong data-i18n="principle1">Keep it clear</strong></div>
+            <div><span>02</span><strong data-i18n="principle2">Build with purpose</strong></div>
+            <div><span>03</span><strong data-i18n="principle3">Improve continuously</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-box">
+        <div class="contact-orb"></div>
+        <span class="section-kicker" data-i18n="contact_kicker">HAVE AN IDEA?</span>
+        <h2 data-i18n="contact_title">Let's make it <span class="gradient-text">real.</span></h2>
+        <p data-i18n="contact_desc">Tell us what you're thinking. We'll explore a practical way to move it forward.</p>
+        <span class="contact-status"><i></i><span data-i18n="contact_status">OPEN TO PROJECT INQUIRIES</span></span>
+        <p class="contact-placeholder" data-i18n="contact_placeholder">Add your preferred public contact email or project form here before launch.</p>
+        <p class="contact-edit-note" data-i18n="contact_edit">Replace hello@example.com with an email address you are authorized to use.</p>
+      </div>
+    </section>
   </main>
-  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">N<span>✦</span></span><span>NOVA<span class="brand-light"> AI STUDIO</span></span></a><span data-i18n="footer_line">Independent thinking. Intelligent building.</span><span>© <span id="year"></span> NOVA AI STUDIO</span></footer>
-  <script src="assets/js/main.js"></script>
-</body></html>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark">N<span>.</span></span>
+        <span class="brand-name">NOVA <strong>AI STUDIO</strong></span>
+      </a>
+      <p data-i18n="footer_line">Independent thinking. Intelligent building.</p>
+      <span>© <span id="year">2026</span> NOVA AI STUDIO</span>
+    </div>
+  </footer>
+</body>
+</html>
