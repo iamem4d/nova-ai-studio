@@ -1,12 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#070b14">
   <title>Thank You | Nova AI Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -26,6 +30,10 @@
         #070b14;
       color: #fff;
       font-family: Arial, sans-serif;
+    }
+
+    html[lang="fa"] body {
+      font-family: "Vazirmatn", Arial, sans-serif;
     }
 
     .card {
@@ -65,11 +73,12 @@
     h1 {
       font-size: clamp(28px, 6vw, 42px);
       margin-bottom: 18px;
+      line-height: 1.5;
     }
 
     p {
       color: #aab8c8;
-      line-height: 1.8;
+      line-height: 1.9;
       font-size: 16px;
       margin-bottom: 32px;
     }
@@ -98,6 +107,8 @@
       border-radius: 8px;
       padding: 9px 12px;
       outline: none;
+      font: inherit;
+      cursor: pointer;
     }
 
     @keyframes appear {
@@ -138,12 +149,13 @@
 
     <br>
 
-    <select class="language" id="language">
+    <select class="language" id="language" aria-label="Select language">
       <option value="en">English</option>
       <option value="ar">العربية</option>
       <option value="fr">Français</option>
       <option value="de">Deutsch</option>
       <option value="zh">中文</option>
+      <option value="fa">فارسی</option>
     </select>
   </main>
 
@@ -173,28 +185,50 @@
         title: "消息发送成功！",
         message: "感谢您联系我们。我们已收到您的消息，将审核您的请求并尽快回复您。",
         home: "返回主页 →"
+      },
+      fa: {
+        title: "پیام شما با موفقیت ارسال شد!",
+        message: "از اینکه با ما تماس گرفتید سپاسگزاریم. پیام شما دریافت شد. درخواستتان را بررسی می‌کنیم و به‌زودی با شما ارتباط خواهیم گرفت.",
+        home: "بازگشت به صفحه اصلی ←"
       }
     };
 
     const language = document.getElementById("language");
 
     function setLanguage(lang) {
-      const t = translations[lang] || translations.en;
+      const selected = translations[lang] ? lang : "en";
+      const t = translations[selected];
 
       document.getElementById("title").textContent = t.title;
       document.getElementById("message").textContent = t.message;
       document.getElementById("home").textContent = t.home;
 
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-      language.value = lang;
+      document.documentElement.lang = selected;
+      document.documentElement.dir =
+        selected === "ar" || selected === "fa" ? "rtl" : "ltr";
+
+      language.value = selected;
+
+      try {
+        localStorage.setItem("nova-language", selected);
+      } catch (error) {
+        // Language selection still works without localStorage.
+      }
     }
 
     language.addEventListener("change", () => {
       setLanguage(language.value);
     });
 
-    setLanguage("en");
+    let savedLanguage = "en";
+
+    try {
+      savedLanguage = localStorage.getItem("nova-language") || "en";
+    } catch (error) {
+      savedLanguage = "en";
+    }
+
+    setLanguage(savedLanguage);
   </script>
 </body>
 </html>
