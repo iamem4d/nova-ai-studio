@@ -514,12 +514,7 @@ if (languageSelect) {
   });
 }
 
-let savedLanguage = "en";
 
-try {
-  savedLanguage = localStorage.getItem("nova-language") || "en";
-} catch (error) {
-  savedLanguage = "en";
 }
 
 setLanguage(savedLanguage);
@@ -986,3 +981,9 @@ if (
 
   updateNovaChatLanguage(novaChatLanguage);
 }
+let savedLanguage = "en";
+
+try {
+  savedLanguage = localStorage.getItem("nova-language") || "en";
+} catch (error) {
+  savedLanguage = "en";
