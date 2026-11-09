@@ -1523,3 +1523,330 @@ html[dir="rtl"] .contact-form textarea {
     grid-column: 1 !important;
   }
 }
+/* =========================================
+   NOVA FLOATING SUPPORT WIDGET
+========================================= */
+
+.nova-chat-widget {
+  --chat-cyan: #43e7e1;
+  --chat-bg: #0b1420;
+  --chat-surface: #111e2d;
+  --chat-border: rgba(67, 231, 225, .2);
+
+  position: fixed;
+  inset-inline-end: 24px;
+  bottom: 24px;
+  z-index: 999;
+  font-family: var(--font);
+}
+
+.nova-chat-launcher {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(67, 231, 225, .65);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #142b3a, #101925);
+  color: var(--chat-cyan);
+  cursor: pointer;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, .4),
+              0 0 25px rgba(67, 231, 225, .16);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.nova-chat-launcher:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .45),
+              0 0 35px rgba(67, 231, 225, .28);
+}
+
+.launcher-logo {
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.launcher-logo span {
+  color: var(--purple);
+}
+
+.launcher-status {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #101925;
+  border-radius: 50%;
+  background: #43e7a0;
+  box-shadow: 0 0 10px #43e7a0;
+}
+
+.nova-chat-panel {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: 82px;
+  width: 365px;
+  height: min(570px, calc(100dvh - 125px));
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(67, 231, 225, .3);
+  border-radius: 17px;
+  background: var(--chat-bg);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, .55),
+              0 0 35px rgba(67, 231, 225, .08);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(15px) scale(.97);
+  transform-origin: bottom;
+  transition: opacity .25s, transform .25s, visibility .25s;
+}
+
+.nova-chat-panel.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.nova-chat-header {
+  min-height: 76px;
+  padding: 13px 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(110deg, #142b3a, #172034);
+  border-bottom: 1px solid var(--chat-border);
+}
+
+.nova-chat-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nova-chat-logo {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(67, 231, 225, .5);
+  border-radius: 11px;
+  color: var(--chat-cyan);
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.nova-chat-logo span {
+  color: var(--purple);
+}
+
+.nova-chat-brand strong {
+  display: block;
+  color: #f1f5f9;
+  font-size: 13px;
+}
+
+.nova-chat-brand small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+  color: #9eafc0;
+  font-size: 10px;
+}
+
+.nova-chat-brand small i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #43e7a0;
+  box-shadow: 0 0 8px #43e7a0;
+}
+
+.nova-chat-close {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--chat-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .04);
+  color: #c5d3df;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.nova-chat-close:hover {
+  color: var(--chat-cyan);
+  border-color: var(--chat-cyan);
+}
+
+.nova-chat-messages {
+  flex: 1;
+  min-height: 0;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #294052 transparent;
+}
+
+.nova-chat-message {
+  max-width: 86%;
+  padding: 11px 13px;
+  border-radius: 12px;
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.nova-chat-message.bot {
+  align-self: flex-start;
+  color: #dce8f2;
+  background: #172638;
+  border: 1px solid rgba(130, 170, 200, .12);
+  border-top-left-radius: 3px;
+}
+
+.nova-chat-message.user {
+  align-self: flex-end;
+  color: #07161b;
+  background: var(--chat-cyan);
+  border-top-right-radius: 3px;
+}
+
+.nova-chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 8px 13px 12px;
+}
+
+.nova-chat-suggestions button {
+  padding: 7px 10px;
+  border: 1px solid rgba(67, 231, 225, .25);
+  border-radius: 20px;
+  background: rgba(67, 231, 225, .05);
+  color: var(--chat-cyan);
+  font-size: 10px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+
+.nova-chat-suggestions button:hover {
+  background: rgba(67, 231, 225, .13);
+  border-color: var(--chat-cyan);
+}
+
+.nova-chat-form {
+  display: flex;
+  gap: 9px;
+  padding: 12px;
+  border-top: 1px solid var(--chat-border);
+  background: #0e1926;
+}
+
+.nova-chat-form input {
+  flex: 1;
+  min-width: 0;
+  height: 43px;
+  padding: 0 13px;
+  border: 1px solid rgba(140, 180, 210, .2);
+  border-radius: 9px;
+  outline: none;
+  background: #172638;
+  color: #f1f5f9;
+  font: inherit;
+  font-size: 12px;
+}
+
+.nova-chat-form input:focus {
+  border-color: var(--chat-cyan);
+  box-shadow: 0 0 0 3px rgba(67, 231, 225, .08);
+}
+
+.nova-chat-form input::placeholder {
+  color: #8193a6;
+}
+
+.nova-chat-form button {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  border: 0;
+  border-radius: 9px;
+  background: var(--chat-cyan);
+  color: #07161b;
+  font-size: 23px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.nova-chat-footer {
+  padding: 6px 10px 9px;
+  text-align: center;
+  color: #718397;
+  font-size: 9px;
+  background: #0e1926;
+}
+
+/* RTL */
+
+html[dir="rtl"] .nova-chat-panel,
+html[dir="rtl"] .nova-chat-widget {
+  direction: rtl;
+}
+
+html[dir="rtl"] .nova-chat-message.bot {
+  align-self: flex-start;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 3px;
+}
+
+html[dir="rtl"] .nova-chat-message.user {
+  border-top-right-radius: 12px;
+  border-top-left-radius: 3px;
+}
+
+html[dir="rtl"] .nova-chat-form input {
+  text-align: right;
+}
+
+/* Mobile */
+
+@media (max-width: 620px) {
+  .nova-chat-widget {
+    inset-inline-end: 14px;
+    bottom: 16px;
+  }
+
+  .nova-chat-launcher {
+    width: 56px;
+    height: 56px;
+    border-radius: 17px;
+  }
+
+  .nova-chat-panel {
+    position: fixed;
+    inset-inline: 12px;
+    bottom: 84px;
+    width: auto;
+    height: min(570px, calc(100dvh - 110px));
+    min-height: 350px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-chat-panel,
+  .nova-chat-launcher {
+    transition: none;
+  }
+}
