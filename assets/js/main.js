@@ -505,3 +505,340 @@ const yearElement = document.getElementById("year");
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
+// =============================================
+// NOVA FLOATING SUPPORT ASSISTANT
+// Multilingual scripted support widget
+// =============================================
+
+const chatTranslations = {
+  en: {
+    title: "Nova Assistant",
+    online: "Online now",
+    greeting: "Hello! Welcome to Nova AI Studio. How can I help you today?",
+    placeholder: "Type your message...",
+    footer: "Nova AI Studio · Support Assistant",
+    send: "Send message",
+    suggestions: [
+      "What services do you offer?",
+      "How can I request a website?",
+      "How can I contact your team?",
+      "What are your working hours?"
+    ],
+    answers: {
+      services: "Nova AI Studio offers web design, web development and practical AI solutions.",
+      website: "You can request a website by filling out the contact form on our website. Tell us about your project and requirements.",
+      contact: "You can contact our team using the contact form on the website. Send your name, email and project details.",
+      hours: "We currently handle project inquiries through our website. Our team will respond as soon as possible.",
+      pricing: "Project costs depend on the scope and requirements. Please send us your project details through the contact form.",
+      greeting: "Hello! Welcome to Nova AI Studio. What would you like to know?",
+      thanks: "You're welcome! Let us know if you need anything else.",
+      fallback: "Thanks for your message! I may not have the answer to that yet. Please use the contact form so our team can help you."
+    }
+  },
+
+  ar: {
+    title: "مساعد نوفا",
+    online: "متصل الآن",
+    greeting: "مرحباً بك في Nova AI Studio! كيف يمكنني مساعدتك اليوم؟",
+    placeholder: "اكتب رسالتك...",
+    footer: "Nova AI Studio · مساعد الدعم",
+    send: "إرسال الرسالة",
+    suggestions: [
+      "ما الخدمات التي تقدمونها؟",
+      "كيف أطلب إنشاء موقع؟",
+      "كيف أتواصل مع فريقكم؟",
+      "ما أوقات العمل؟"
+    ],
+    answers: {
+      services: "يقدم Nova AI Studio تصميم المواقع وتطويرها وحلول الذكاء الاصطناعي العملية.",
+      website: "يمكنك طلب موقع إلكتروني من خلال تعبئة نموذج التواصل على موقعنا وشرح متطلبات مشروعك.",
+      contact: "يمكنك التواصل مع فريقنا عبر نموذج الاتصال الموجود على الموقع.",
+      hours: "نستقبل طلبات المشاريع عبر موقعنا، وسيقوم فريقنا بالرد في أقرب وقت ممكن.",
+      pricing: "تعتمد تكلفة المشروع على حجمه ومتطلباته. أرسل تفاصيل مشروعك عبر نموذج التواصل.",
+      greeting: "مرحباً! أهلاً بك في Nova AI Studio. كيف يمكنني مساعدتك؟",
+      thanks: "على الرحب والسعة! يسعدنا مساعدتك.",
+      fallback: "شكراً لرسالتك! لا أملك إجابة عن هذا السؤال حالياً. يرجى استخدام نموذج التواصل لمساعدتك."
+    }
+  },
+
+  fr: {
+    title: "Assistant Nova",
+    online: "En ligne",
+    greeting: "Bonjour ! Bienvenue chez Nova AI Studio. Comment puis-je vous aider ?",
+    placeholder: "Écrivez votre message...",
+    footer: "Nova AI Studio · Assistant",
+    send: "Envoyer le message",
+    suggestions: [
+      "Quels services proposez-vous ?",
+      "Comment demander un site web ?",
+      "Comment contacter votre équipe ?",
+      "Quels sont vos horaires ?"
+    ],
+    answers: {
+      services: "Nova AI Studio propose la conception web, le développement web et des solutions pratiques d'intelligence artificielle.",
+      website: "Vous pouvez demander un site web en remplissant le formulaire de contact et en décrivant votre projet.",
+      contact: "Vous pouvez contacter notre équipe via le formulaire de contact sur notre site.",
+      hours: "Nous recevons actuellement les demandes de projets sur notre site. Notre équipe vous répondra dès que possible.",
+      pricing: "Le prix dépend de la portée et des besoins du projet. Envoyez-nous les détails via le formulaire de contact.",
+      greeting: "Bonjour ! Bienvenue chez Nova AI Studio. Que souhaitez-vous savoir ?",
+      thanks: "Avec plaisir ! N'hésitez pas à nous contacter si vous avez besoin d'aide.",
+      fallback: "Merci pour votre message ! Je n'ai pas encore la réponse à cette question. Veuillez utiliser le formulaire de contact."
+    }
+  },
+
+  de: {
+    title: "Nova Assistent",
+    online: "Jetzt online",
+    greeting: "Hallo! Willkommen bei Nova AI Studio. Wie kann ich Ihnen helfen?",
+    placeholder: "Nachricht eingeben...",
+    footer: "Nova AI Studio · Support-Assistent",
+    send: "Nachricht senden",
+    suggestions: [
+      "Welche Leistungen bieten Sie an?",
+      "Wie kann ich eine Website anfragen?",
+      "Wie kann ich Ihr Team kontaktieren?",
+      "Wie sind Ihre Arbeitszeiten?"
+    ],
+    answers: {
+      services: "Nova AI Studio bietet Webdesign, Webentwicklung und praktische KI-Lösungen.",
+      website: "Sie können eine Website über das Kontaktformular anfragen. Beschreiben Sie dort Ihr Projekt und Ihre Anforderungen.",
+      contact: "Sie können unser Team über das Kontaktformular auf unserer Website erreichen.",
+      hours: "Projektanfragen nehmen wir über unsere Website entgegen. Unser Team antwortet so schnell wie möglich.",
+      pricing: "Die Kosten hängen vom Umfang und den Anforderungen des Projekts ab. Senden Sie uns Ihre Projektdetails über das Kontaktformular.",
+      greeting: "Hallo! Willkommen bei Nova AI Studio. Was möchten Sie wissen?",
+      thanks: "Gern geschehen! Wir helfen Ihnen gerne weiter.",
+      fallback: "Vielen Dank für Ihre Nachricht! Ich habe darauf noch keine passende Antwort. Bitte nutzen Sie unser Kontaktformular."
+    }
+  },
+
+  zh: {
+    title: "Nova 智能助手",
+    online: "当前在线",
+    greeting: "您好！欢迎来到 Nova AI Studio。今天有什么可以帮您？",
+    placeholder: "请输入您的消息...",
+    footer: "Nova AI Studio · 客户支持",
+    send: "发送消息",
+    suggestions: [
+      "你们提供哪些服务？",
+      "如何申请制作网站？",
+      "如何联系你们的团队？",
+      "你们的工作时间是什么？"
+    ],
+    answers: {
+      services: "Nova AI Studio 提供网站设计、网站开发和实用的人工智能解决方案。",
+      website: "您可以填写网站上的联系表单，介绍您的项目和需求，以申请网站制作服务。",
+      contact: "您可以通过网站上的联系表单与我们的团队取得联系。",
+      hours: "目前我们通过网站接收项目咨询，团队会尽快回复您。",
+      pricing: "项目费用取决于具体需求和项目规模。请通过联系表单发送项目详情。",
+      greeting: "您好！欢迎来到 Nova AI Studio。有什么想了解的吗？",
+      thanks: "不客气！如果您还需要帮助，欢迎继续咨询。",
+      fallback: "感谢您的留言！我暂时无法回答这个问题。请使用联系表单与我们的团队联系。"
+    }
+  }
+};
+
+const chatKeywords = {
+  en: {
+    services: ["service", "services", "offer"],
+    website: ["website", "web site", "design", "build a site"],
+    contact: ["contact", "email", "support", "reach"],
+    hours: ["hour", "hours", "working time", "open"],
+    pricing: ["price", "pricing", "cost", "budget"],
+    greeting: ["hello", "hi", "hey"],
+    thanks: ["thank", "thanks"]
+  },
+  ar: {
+    services: ["الخدمات", "خدمات", "تقدمون"],
+    website: ["موقع", "مواقع", "إنشاء موقع", "تصميم"],
+    contact: ["تواصل", "اتصال", "البريد", "الفريق"],
+    hours: ["ساعات", "العمل", "مواعيد"],
+    pricing: ["السعر", "أسعار", "التكلفة", "ميزانية"],
+    greeting: ["مرحبا", "أهلا", "السلام"],
+    thanks: ["شكرا", "شكراً"]
+  },
+  fr: {
+    services: ["service", "services", "proposez"],
+    website: ["site web", "site internet", "créer un site", "conception"],
+    contact: ["contact", "contacter", "équipe", "email"],
+    hours: ["horaires", "heures", "travail"],
+    pricing: ["prix", "tarif", "coût", "budget"],
+    greeting: ["bonjour", "salut", "hello"],
+    thanks: ["merci"]
+  },
+  de: {
+    services: ["leistung", "leistungen", "service", "bieten"],
+    website: ["website", "webseite", "homepage", "erstellen"],
+    contact: ["kontakt", "kontaktieren", "team", "email"],
+    hours: ["arbeitszeit", "öffnungszeiten", "stunden"],
+    pricing: ["preis", "kosten", "budget"],
+    greeting: ["hallo", "guten tag", "hi"],
+    thanks: ["danke", "vielen dank"]
+  },
+  zh: {
+    services: ["服务", "提供"],
+    website: ["网站", "网页", "制作"],
+    contact: ["联系", "团队", "邮箱"],
+    hours: ["时间", "工作时间", "营业"],
+    pricing: ["价格", "费用", "预算"],
+    greeting: ["你好", "您好", "嗨"],
+    thanks: ["谢谢", "感谢"]
+  }
+};
+
+const novaChatPanel = document.getElementById("novaChatPanel");
+const novaChatLauncher = document.getElementById("novaChatLauncher");
+const novaChatClose = document.getElementById("novaChatClose");
+const novaChatMessages = document.getElementById("novaChatMessages");
+const novaChatForm = document.getElementById("novaChatForm");
+const novaChatInput = document.getElementById("novaChatInput");
+const novaChatSuggestions = document.getElementById("novaChatSuggestions");
+
+let novaChatLanguage = document.documentElement.lang || "en";
+
+function updateNovaChatLanguage(language) {
+  novaChatLanguage = chatTranslations[language] ? language : "en";
+
+  const t = chatTranslations[novaChatLanguage];
+
+  document.querySelectorAll("[data-chat-i18n]").forEach(element => {
+    const key = element.dataset.chatI18n;
+    if (t[key]) element.textContent = t[key];
+  });
+
+  document.querySelectorAll("[data-chat-i18n-placeholder]").forEach(element => {
+    const key = element.dataset.chatI18nPlaceholder;
+    if (t[key]) element.placeholder = t[key];
+  });
+
+  if (novaChatLauncher) {
+    novaChatLauncher.setAttribute(
+      "aria-label",
+      novaChatLanguage === "ar" ? "فتح المحادثة" : "Open support chat"
+    );
+  }
+
+  if (novaChatClose) {
+    novaChatClose.setAttribute(
+      "aria-label",
+      novaChatLanguage === "ar" ? "إغلاق المحادثة" : "Close chat"
+    );
+  }
+
+  if (novaChatSuggestions) {
+    const buttons = novaChatSuggestions.querySelectorAll("button");
+
+    buttons.forEach((button, index) => {
+      button.textContent = t.suggestions[index];
+    });
+  }
+
+  if (novaChatForm) {
+    const sendButton = novaChatForm.querySelector("button");
+    if (sendButton) sendButton.setAttribute("aria-label", t.send);
+  }
+}
+
+function addNovaChatMessage(message, sender) {
+  const messageElement = document.createElement("div");
+  messageElement.className = `nova-chat-message ${sender}`;
+  messageElement.textContent = message;
+
+  novaChatMessages.appendChild(messageElement);
+  novaChatMessages.scrollTop = novaChatMessages.scrollHeight;
+}
+
+function getNovaChatAnswer(message) {
+  const text = message.toLowerCase();
+  const keywords = chatKeywords[novaChatLanguage];
+  const answers = chatTranslations[novaChatLanguage].answers;
+
+  for (const intent of [
+    "services",
+    "website",
+    "contact",
+    "hours",
+    "pricing",
+    "greeting",
+    "thanks"
+  ]) {
+    if (keywords[intent].some(keyword => text.includes(keyword))) {
+      return answers[intent];
+    }
+  }
+
+  return answers.fallback;
+}
+
+function sendNovaChatMessage(message) {
+  const cleanMessage = message.trim();
+  if (!cleanMessage) return;
+
+  addNovaChatMessage(cleanMessage, "user");
+
+  novaChatInput.value = "";
+  novaChatInput.focus();
+
+  const answer = getNovaChatAnswer(cleanMessage);
+
+  window.setTimeout(() => {
+    addNovaChatMessage(answer, "bot");
+  }, 450);
+}
+
+if (
+  novaChatPanel &&
+  novaChatLauncher &&
+  novaChatClose &&
+  novaChatMessages &&
+  novaChatForm &&
+  novaChatInput
+) {
+  function openNovaChat() {
+    novaChatPanel.classList.add("open");
+    novaChatPanel.setAttribute("aria-hidden", "false");
+    novaChatLauncher.setAttribute("aria-expanded", "true");
+    novaChatInput.focus();
+  }
+
+  function closeNovaChat() {
+    novaChatPanel.classList.remove("open");
+    novaChatPanel.setAttribute("aria-hidden", "true");
+    novaChatLauncher.setAttribute("aria-expanded", "false");
+  }
+
+  novaChatLauncher.addEventListener("click", () => {
+    if (novaChatPanel.classList.contains("open")) {
+      closeNovaChat();
+    } else {
+      openNovaChat();
+    }
+  });
+
+  novaChatClose.addEventListener("click", closeNovaChat);
+
+  novaChatForm.addEventListener("submit", event => {
+    event.preventDefault();
+    sendNovaChatMessage(novaChatInput.value);
+  });
+
+  if (novaChatSuggestions) {
+    novaChatSuggestions.querySelectorAll("button").forEach(button => {
+      button.addEventListener("click", () => {
+        sendNovaChatMessage(button.textContent);
+      });
+    });
+  }
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") closeNovaChat();
+  });
+
+  updateNovaChatLanguage(novaChatLanguage);
+
+  // Update widget whenever the website language changes.
+  if (languageSelect) {
+    languageSelect.addEventListener("change", event => {
+      updateNovaChatLanguage(event.target.value);
+    });
+  }
+}
