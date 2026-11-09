@@ -1,4 +1,3 @@
-
 // =============================================
 // NOVA AI STUDIO - MAIN JAVASCRIPT
 // Multilingual system + Contact form + Mobile menu
@@ -514,11 +513,6 @@ if (languageSelect) {
   });
 }
 
-
-}
-
-setLanguage(savedLanguage);
-
 // =============================================
 // MOBILE NAVIGATION
 // =============================================
@@ -572,7 +566,6 @@ if (yearElement) {
 
 // =============================================
 // NOVA FLOATING SUPPORT ASSISTANT
-// Multilingual scripted support widget
 // =============================================
 
 const chatTranslations = {
@@ -981,9 +974,18 @@ if (
 
   updateNovaChatLanguage(novaChatLanguage);
 }
+
+// =============================================
+// INITIALIZE SAVED LANGUAGE
+// This must run AFTER all chat variables/functions
+// =============================================
+
 let savedLanguage = "en";
 
 try {
   savedLanguage = localStorage.getItem("nova-language") || "en";
 } catch (error) {
   savedLanguage = "en";
+}
+
+setLanguage(savedLanguage);
