@@ -304,3 +304,198 @@ const yearElement = document.getElementById("year");
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
+
+// =====================================
+// NOVA CONTACT FORM TRANSLATIONS
+// =====================================
+
+const formTranslations = {
+  en: {
+    name: "Full Name",
+    namePlaceholder: "Your full name",
+    email: "Email Address",
+    emailPlaceholder: "you@example.com",
+    service: "Service",
+    servicePlaceholder: "Select a service",
+    ai: "AI Tools & Prototypes",
+    web: "Websites & Experiences",
+    automation: "Workflow Automation",
+    other: "Other",
+    budget: "Estimated Budget",
+    budgetPlaceholder: "Select your budget",
+    under100: "Under $100",
+    range100: "$100 - $500",
+    range500: "$500 - $1000",
+    over1000: "$1000+",
+    unsure: "Not sure yet",
+    message: "Project Details",
+    messagePlaceholder: "Tell us about your project...",
+    button: "Send Message ↗"
+  },
+
+  ar: {
+    name: "الاسم الكامل",
+    namePlaceholder: "اكتب اسمك الكامل",
+    email: "البريد الإلكتروني",
+    emailPlaceholder: "you@example.com",
+    service: "الخدمة",
+    servicePlaceholder: "اختر الخدمة",
+    ai: "أدوات ونماذج الذكاء الاصطناعي",
+    web: "المواقع والتجارب الرقمية",
+    automation: "أتمتة سير العمل",
+    other: "أخرى",
+    budget: "الميزانية المتوقعة",
+    budgetPlaceholder: "اختر ميزانيتك",
+    under100: "أقل من 100 دولار",
+    range100: "100 - 500 دولار",
+    range500: "500 - 1000 دولار",
+    over1000: "أكثر من 1000 دولار",
+    unsure: "غير محددة بعد",
+    message: "تفاصيل المشروع",
+    messagePlaceholder: "أخبرنا عن مشروعك...",
+    button: "إرسال الرسالة ↗"
+  },
+
+  fr: {
+    name: "Nom complet",
+    namePlaceholder: "Votre nom complet",
+    email: "Adresse e-mail",
+    emailPlaceholder: "vous@example.com",
+    service: "Service",
+    servicePlaceholder: "Choisissez un service",
+    ai: "Outils et prototypes IA",
+    web: "Sites web et expériences",
+    automation: "Automatisation des processus",
+    other: "Autre",
+    budget: "Budget estimé",
+    budgetPlaceholder: "Choisissez votre budget",
+    under100: "Moins de 100 $",
+    range100: "100 - 500 $",
+    range500: "500 - 1000 $",
+    over1000: "Plus de 1000 $",
+    unsure: "Pas encore défini",
+    message: "Détails du projet",
+    messagePlaceholder: "Parlez-nous de votre projet...",
+    button: "Envoyer le message ↗"
+  },
+
+  de: {
+    name: "Vollständiger Name",
+    namePlaceholder: "Ihr vollständiger Name",
+    email: "E-Mail-Adresse",
+    emailPlaceholder: "sie@beispiel.com",
+    service: "Dienstleistung",
+    servicePlaceholder: "Dienstleistung auswählen",
+    ai: "KI-Tools und Prototypen",
+    web: "Websites und digitale Erlebnisse",
+    automation: "Workflow-Automatisierung",
+    other: "Sonstiges",
+    budget: "Geschätztes Budget",
+    budgetPlaceholder: "Budget auswählen",
+    under100: "Unter 100 $",
+    range100: "100 - 500 $",
+    range500: "500 - 1000 $",
+    over1000: "Über 1000 $",
+    unsure: "Noch nicht sicher",
+    message: "Projektdetails",
+    messagePlaceholder: "Erzählen Sie uns von Ihrem Projekt...",
+    button: "Nachricht senden ↗"
+  },
+
+  zh: {
+    name: "姓名",
+    namePlaceholder: "请输入您的姓名",
+    email: "电子邮箱",
+    emailPlaceholder: "you@example.com",
+    service: "服务类型",
+    servicePlaceholder: "请选择服务",
+    ai: "人工智能工具与原型",
+    web: "网站与数字体验",
+    automation: "工作流程自动化",
+    other: "其他",
+    budget: "预计预算",
+    budgetPlaceholder: "请选择预算",
+    under100: "低于 100 美元",
+    range100: "100 - 500 美元",
+    range500: "500 - 1000 美元",
+    over1000: "超过 1000 美元",
+    unsure: "暂未确定",
+    message: "项目详情",
+    messagePlaceholder: "请介绍您的项目...",
+    button: "发送消息 ↗"
+  }
+};
+
+function updateContactFormLanguage(language) {
+  const t = formTranslations[language] || formTranslations.en;
+
+  const setText = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value;
+  };
+
+  const setPlaceholder = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.placeholder = value;
+  };
+
+  setText('label[for="contact-name"]', t.name);
+  setText('label[for="contact-email"]', t.email);
+  setText('label[for="contact-service"]', t.service);
+  setText('label[for="contact-budget"]', t.budget);
+  setText('label[for="contact-message"]', t.message);
+
+  setPlaceholder("#contact-name", t.namePlaceholder);
+  setPlaceholder("#contact-email", t.emailPlaceholder);
+  setPlaceholder("#contact-message", t.messagePlaceholder);
+
+  const options = {
+    "": t.servicePlaceholder,
+    "AI Tools & Prototypes": t.ai,
+    "Websites & Experiences": t.web,
+    "Workflow Automation": t.automation,
+    "Other": t.other
+  };
+
+  const serviceSelect = document.getElementById("contact-service");
+
+  if (serviceSelect) {
+    Array.from(serviceSelect.options).forEach(option => {
+      if (options[option.value]) {
+        option.textContent = options[option.value];
+      }
+    });
+  }
+
+  const budgetOptions = {
+    "": t.budgetPlaceholder,
+    "Under $100": t.under100,
+    "$100 - $500": t.range100,
+    "$500 - $1000": t.range500,
+    "$1000+": t.over1000,
+    "Not sure yet": t.unsure
+  };
+
+  const budgetSelect = document.getElementById("contact-budget");
+
+  if (budgetSelect) {
+    Array.from(budgetSelect.options).forEach(option => {
+      if (budgetOptions[option.value]) {
+        option.textContent = budgetOptions[option.value];
+      }
+    });
+  }
+
+  setText(".contact-form button", t.button);
+}
+
+// Connect form translations to the existing language system
+const originalSetLanguage = setLanguage;
+
+setLanguage = function(language) {
+  originalSetLanguage(language);
+  updateContactFormLanguage(language);
+};
+
+// Apply translations immediately on page load
+updateContactFormLanguage(document.documentElement.lang || "en");
