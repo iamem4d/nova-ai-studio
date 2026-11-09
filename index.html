@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
 </head>
-
 <body>
   <div class="page-glow page-glow-one"></div>
   <div class="page-glow page-glow-two"></div>
@@ -65,6 +64,7 @@
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero section" id="home">
       <div class="container hero-grid">
         <div class="hero-content">
@@ -114,6 +114,7 @@
       </div>
     </section>
 
+    <!-- SERVICES -->
     <section class="section services-section" id="services">
       <div class="container">
         <div class="section-heading">
@@ -152,6 +153,7 @@
       </div>
     </section>
 
+    <!-- WORK -->
     <section class="section work-section" id="work">
       <div class="container">
         <div class="section-heading">
@@ -175,6 +177,7 @@
                 </div>
               </div>
             </div>
+
             <div class="work-info">
               <span>INTERACTIVE DEMO / 001</span>
               <h3 data-i18n="work1_title">Customer Support Assistant</h3>
@@ -195,6 +198,7 @@
                 </div>
               </div>
             </div>
+
             <div class="work-info">
               <span>CONCEPT / 002</span>
               <h3 data-i18n="work2_title">Smart Workflow Dashboard</h3>
@@ -204,6 +208,7 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section class="section about-section" id="about">
       <div class="container about-grid">
         <div class="about-visual">
@@ -228,6 +233,7 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section class="section contact-section" id="contact">
       <div class="container contact-box">
         <div class="contact-orb"></div>
@@ -334,15 +340,98 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <a class="brand" href="#home">
         <span class="brand-mark">N<span>.</span></span>
         <span class="brand-name">NOVA <strong>AI STUDIO</strong></span>
       </a>
+
       <p data-i18n="footer_line">Independent thinking. Intelligent building.</p>
       <span>© <span id="year">2026</span> NOVA AI STUDIO</span>
     </div>
   </footer>
+
+  <!-- NOVA FLOATING SUPPORT WIDGET -->
+  <div class="nova-chat-widget" id="novaChatWidget">
+
+    <section
+      class="nova-chat-panel"
+      id="novaChatPanel"
+      aria-label="Nova Support Assistant"
+      aria-hidden="true"
+    >
+      <header class="nova-chat-header">
+        <div class="nova-chat-brand">
+          <span class="nova-chat-logo">N<span>.</span></span>
+
+          <div>
+            <strong data-chat-i18n="title">Nova Assistant</strong>
+            <small>
+              <i></i>
+              <span data-chat-i18n="online">Online now</span>
+            </small>
+          </div>
+        </div>
+
+        <button
+          class="nova-chat-close"
+          id="novaChatClose"
+          type="button"
+          aria-label="Close chat"
+        >×</button>
+      </header>
+
+      <div
+        class="nova-chat-messages"
+        id="novaChatMessages"
+        aria-live="polite"
+      >
+        <div class="nova-chat-message bot">
+          <span data-chat-i18n="greeting">
+            Hello! Welcome to Nova AI Studio. How can I help you today?
+          </span>
+        </div>
+      </div>
+
+      <div class="nova-chat-suggestions" id="novaChatSuggestions">
+        <button type="button" data-chat-intent="services"></button>
+        <button type="button" data-chat-intent="website"></button>
+        <button type="button" data-chat-intent="contact"></button>
+        <button type="button" data-chat-intent="hours"></button>
+      </div>
+
+      <form class="nova-chat-form" id="novaChatForm">
+        <input
+          type="text"
+          id="novaChatInput"
+          data-chat-i18n-placeholder="placeholder"
+          placeholder="Type your message..."
+          autocomplete="off"
+          required
+        >
+
+        <button type="submit" aria-label="Send message">↑</button>
+      </form>
+
+      <div class="nova-chat-footer" data-chat-i18n="footer">
+        Nova AI Studio · Support Assistant
+      </div>
+    </section>
+
+    <button
+      class="nova-chat-launcher"
+      id="novaChatLauncher"
+      type="button"
+      aria-label="Open support chat"
+      aria-expanded="false"
+    >
+      <span class="launcher-logo">N<span>.</span></span>
+      <span class="launcher-status"></span>
+    </button>
+  </div>
+  <!-- END NOVA FLOATING SUPPORT WIDGET -->
+
 </body>
 </html>
