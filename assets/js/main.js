@@ -2,6 +2,7 @@
 // =============================================
 // NOVA AI STUDIO - MAIN JAVASCRIPT
 // Multilingual system + Contact form + Mobile menu
+// Languages: EN / AR / FR / DE / ZH / FA
 // =============================================
 
 const translations = {
@@ -218,6 +219,49 @@ const translations = {
     contact_placeholder: "您的项目始于一个想法。",
     contact_edit: "此部分正在更新。",
     footer_line: "为下一个数字时代而设计。"
+  },
+
+  fa: {
+    nav_services: "خدمات",
+    nav_work: "نمونه‌کارها",
+    nav_about: "درباره ما",
+    nav_contact: "تماس با ما",
+    nav_start: "شروع گفتگو",
+    eyebrow: "استودیوی مستقل دیجیتال",
+    hero_title: "تبدیل ایده‌ها به <span>تجربه‌های دیجیتال.</span>",
+    hero_desc: "Nova AI Studio وب‌سایت‌های مدرن و تجربه‌های دیجیتال را برای برندها و کسب‌وکارهای آینده‌نگر طراحی می‌کند.",
+    hero_cta: "مشاهده خدمات",
+    hero_secondary: "مشاهده نمونه‌کارها",
+    hero_note: "تفکر خلاقانه. فناوری هوشمند. تأثیر دیجیتال.",
+    strip: "طراحی • توسعه • هوش مصنوعی • تجربه‌های دیجیتال",
+    services_kicker: "خدمات ما",
+    services_title: "راهکارهای دیجیتال برای رشد.",
+    services_desc: "ما با ترکیب خلاقیت، فناوری و استراتژی، تجربه‌های دیجیتال ارزشمندی خلق می‌کنیم.",
+    service1_title: "طراحی وب‌سایت",
+    service1_desc: "وب‌سایت‌های مدرن، واکنش‌گرا و جذاب متناسب با هویت برند شما.",
+    service2_title: "توسعه وب‌سایت",
+    service2_desc: "وب‌سایت‌های سریع، کاربردی و قابل‌اعتماد با فناوری‌های مدرن وب.",
+    service3_title: "راهکارهای هوش مصنوعی",
+    service3_desc: "تجربه‌های کاربردی مبتنی بر هوش مصنوعی برای فعالیت هوشمندانه‌تر کسب‌وکارها.",
+    card_link: "اطلاعات بیشتر",
+    work_kicker: "نمونه‌کارهای منتخب",
+    work_title: "ایده‌هایی که به واقعیت تبدیل می‌شوند.",
+    work_desc: "نگاهی به سبک طراحی و تجربه‌های دیجیتالی که قصد خلق آن‌ها را داریم.",
+    work1_title: "دستیار پشتیبانی مشتریان",
+    work2_title: "داشبورد هوشمند مدیریت گردش کار",
+    about_kicker: "درباره نوا",
+    about_title: "تلاقی فناوری و خلاقیت.",
+    about_desc: "Nova AI Studio یک استودیوی مستقل دیجیتال است که بر طراحی اصولی، توسعه مدرن و تجربه‌های کاربردی هوش مصنوعی تمرکز دارد.",
+    principle1: "خلاقیت در طراحی",
+    principle2: "ساخته‌شده با فناوری",
+    principle3: "تمرکز بر ارزش واقعی",
+    contact_kicker: "با ما در ارتباط باشید",
+    contact_title: "ایده‌ای در ذهن دارید؟",
+    contact_desc: "از برنامه خود برایمان بگویید تا بررسی کنیم چه چیزی می‌توانیم با هم خلق کنیم.",
+    contact_status: "اطلاعات تماس به‌زودی اضافه می‌شود.",
+    contact_placeholder: "پروژه شما با یک ایده آغاز می‌شود.",
+    contact_edit: "این بخش در حال به‌روزرسانی است.",
+    footer_line: "طراحی‌شده برای عصر دیجیتال آینده."
   }
 };
 
@@ -339,6 +383,29 @@ const formTranslations = {
     message: "项目详情",
     messagePlaceholder: "请介绍您的项目...",
     button: "发送消息 ↗"
+  },
+
+  fa: {
+    name: "نام و نام خانوادگی",
+    namePlaceholder: "نام کامل خود را وارد کنید",
+    email: "آدرس ایمیل",
+    emailPlaceholder: "you@example.com",
+    service: "نوع خدمات",
+    servicePlaceholder: "یک خدمت انتخاب کنید",
+    ai: "ابزارها و نمونه‌های هوش مصنوعی",
+    web: "وب‌سایت‌ها و تجربه‌های دیجیتال",
+    automation: "خودکارسازی گردش کار",
+    other: "سایر موارد",
+    budget: "بودجه تخمینی",
+    budgetPlaceholder: "بودجه خود را انتخاب کنید",
+    under100: "کمتر از ۱۰۰ دلار",
+    range100: "۱۰۰ تا ۵۰۰ دلار",
+    range500: "۵۰۰ تا ۱۰۰۰ دلار",
+    over1000: "بیشتر از ۱۰۰۰ دلار",
+    unsure: "هنوز مشخص نیست",
+    message: "جزئیات پروژه",
+    messagePlaceholder: "درباره پروژه خود برایمان بنویسید...",
+    button: "ارسال پیام ↗"
   }
 };
 
@@ -424,13 +491,15 @@ function setLanguage(language) {
   });
 
   document.documentElement.lang = selectedLanguage;
-  document.documentElement.dir = selectedLanguage === "ar" ? "rtl" : "ltr";
+  document.documentElement.dir =
+    ["ar", "fa"].includes(selectedLanguage) ? "rtl" : "ltr";
 
   if (languageSelect) {
     languageSelect.value = selectedLanguage;
   }
 
   updateContactFormLanguage(selectedLanguage);
+  updateNovaChatLanguage(selectedLanguage);
 
   try {
     localStorage.setItem("nova-language", selectedLanguage);
@@ -505,6 +574,7 @@ const yearElement = document.getElementById("year");
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
+
 // =============================================
 // NOVA FLOATING SUPPORT ASSISTANT
 // Multilingual scripted support widget
@@ -634,8 +704,37 @@ const chatTranslations = {
       thanks: "不客气！如果您还需要帮助，欢迎继续咨询。",
       fallback: "感谢您的留言！我暂时无法回答这个问题。请使用联系表单与我们的团队联系。"
     }
+  },
+
+  fa: {
+    title: "دستیار نوا",
+    online: "اکنون آنلاین",
+    greeting: "سلام! به Nova AI Studio خوش آمدید. چطور می‌توانم کمکتان کنم؟",
+    placeholder: "پیام خود را بنویسید...",
+    footer: "Nova AI Studio · دستیار پشتیبانی",
+    send: "ارسال پیام",
+    suggestions: [
+      "چه خدماتی ارائه می‌دهید؟",
+      "چطور می‌توانم درخواست طراحی سایت بدهم؟",
+      "چطور با تیم شما تماس بگیرم؟",
+      "ساعات کاری شما چگونه است؟"
+    ],
+    answers: {
+      services: "Nova AI Studio خدمات طراحی وب‌سایت، توسعه وب و راهکارهای کاربردی هوش مصنوعی ارائه می‌دهد.",
+      website: "برای درخواست طراحی وب‌سایت، فرم تماس موجود در سایت را تکمیل کنید و جزئیات و نیازهای پروژه خود را برای ما بنویسید.",
+      contact: "برای ارتباط با تیم نوا می‌توانید از فرم تماس در وب‌سایت استفاده کنید و نام، ایمیل و جزئیات پروژه خود را ارسال کنید.",
+      hours: "در حال حاضر درخواست‌های پروژه از طریق وب‌سایت دریافت می‌شوند. تیم ما در اولین فرصت پاسخ خواهد داد.",
+      pricing: "هزینه پروژه به امکانات، پیچیدگی و نیازهای آن بستگی دارد. برای بررسی هزینه، جزئیات پروژه خود را از طریق فرم تماس ارسال کنید.",
+      greeting: "سلام! به Nova AI Studio خوش آمدید. دوست دارید درباره چه چیزی بیشتر بدانید؟",
+      thanks: "خواهش می‌کنم! اگر سؤال دیگری دارید، خوشحال می‌شویم راهنمایی‌تان کنیم.",
+      fallback: "از پیام شما سپاسگزاریم! در حال حاضر پاسخ مشخصی برای این سؤال ندارم. لطفاً از فرم تماس سایت استفاده کنید تا تیم ما راهنمایی‌تان کند."
+    }
   }
 };
+
+// =============================================
+// CHAT KEYWORDS
+// =============================================
 
 const chatKeywords = {
   en: {
@@ -647,6 +746,7 @@ const chatKeywords = {
     greeting: ["hello", "hi", "hey"],
     thanks: ["thank", "thanks"]
   },
+
   ar: {
     services: ["الخدمات", "خدمات", "تقدمون"],
     website: ["موقع", "مواقع", "إنشاء موقع", "تصميم"],
@@ -656,6 +756,7 @@ const chatKeywords = {
     greeting: ["مرحبا", "أهلا", "السلام"],
     thanks: ["شكرا", "شكراً"]
   },
+
   fr: {
     services: ["service", "services", "proposez"],
     website: ["site web", "site internet", "créer un site", "conception"],
@@ -665,6 +766,7 @@ const chatKeywords = {
     greeting: ["bonjour", "salut", "hello"],
     thanks: ["merci"]
   },
+
   de: {
     services: ["leistung", "leistungen", "service", "bieten"],
     website: ["website", "webseite", "homepage", "erstellen"],
@@ -674,6 +776,7 @@ const chatKeywords = {
     greeting: ["hallo", "guten tag", "hi"],
     thanks: ["danke", "vielen dank"]
   },
+
   zh: {
     services: ["服务", "提供"],
     website: ["网站", "网页", "制作"],
@@ -682,8 +785,22 @@ const chatKeywords = {
     pricing: ["价格", "费用", "预算"],
     greeting: ["你好", "您好", "嗨"],
     thanks: ["谢谢", "感谢"]
+  },
+
+  fa: {
+    services: ["خدمات", "سرویس", "چه خدماتی", "ارائه می‌دهید", "ارائه می کنید"],
+    website: ["سایت", "وب‌سایت", "وب سایت", "طراحی سایت", "ساخت سایت", "طراحی وب"],
+    contact: ["تماس", "ارتباط", "ایمیل", "پشتیبانی", "تیم شما"],
+    hours: ["ساعت", "ساعات کاری", "زمان کاری", "چه زمانی", "کی باز"],
+    pricing: ["قیمت", "هزینه", "بودجه", "تعرفه", "مبلغ"],
+    greeting: ["سلام", "درود", "صبح بخیر", "وقت بخیر"],
+    thanks: ["ممنون", "متشکرم", "سپاس", "مرسی"]
   }
 };
+
+// =============================================
+// FLOATING CHAT ELEMENTS
+// =============================================
 
 const novaChatPanel = document.getElementById("novaChatPanel");
 const novaChatLauncher = document.getElementById("novaChatLauncher");
@@ -694,6 +811,10 @@ const novaChatInput = document.getElementById("novaChatInput");
 const novaChatSuggestions = document.getElementById("novaChatSuggestions");
 
 let novaChatLanguage = document.documentElement.lang || "en";
+
+// =============================================
+// UPDATE CHAT LANGUAGE
+// =============================================
 
 function updateNovaChatLanguage(language) {
   novaChatLanguage = chatTranslations[language] ? language : "en";
@@ -711,16 +832,26 @@ function updateNovaChatLanguage(language) {
   });
 
   if (novaChatLauncher) {
+    const labels = {
+      ar: "فتح المحادثة",
+      fa: "باز کردن گفتگو"
+    };
+
     novaChatLauncher.setAttribute(
       "aria-label",
-      novaChatLanguage === "ar" ? "فتح المحادثة" : "Open support chat"
+      labels[novaChatLanguage] || "Open support chat"
     );
   }
 
   if (novaChatClose) {
+    const labels = {
+      ar: "إغلاق المحادثة",
+      fa: "بستن گفتگو"
+    };
+
     novaChatClose.setAttribute(
       "aria-label",
-      novaChatLanguage === "ar" ? "إغلاق المحادثة" : "Close chat"
+      labels[novaChatLanguage] || "Close chat"
     );
   }
 
@@ -728,7 +859,9 @@ function updateNovaChatLanguage(language) {
     const buttons = novaChatSuggestions.querySelectorAll("button");
 
     buttons.forEach((button, index) => {
-      button.textContent = t.suggestions[index];
+      if (t.suggestions[index]) {
+        button.textContent = t.suggestions[index];
+      }
     });
   }
 
@@ -738,7 +871,13 @@ function updateNovaChatLanguage(language) {
   }
 }
 
+// =============================================
+// ADD CHAT MESSAGE
+// =============================================
+
 function addNovaChatMessage(message, sender) {
+  if (!novaChatMessages) return;
+
   const messageElement = document.createElement("div");
   messageElement.className = `nova-chat-message ${sender}`;
   messageElement.textContent = message;
@@ -746,6 +885,10 @@ function addNovaChatMessage(message, sender) {
   novaChatMessages.appendChild(messageElement);
   novaChatMessages.scrollTop = novaChatMessages.scrollHeight;
 }
+
+// =============================================
+// GET CHAT ANSWER
+// =============================================
 
 function getNovaChatAnswer(message) {
   const text = message.toLowerCase();
@@ -769,9 +912,13 @@ function getNovaChatAnswer(message) {
   return answers.fallback;
 }
 
+// =============================================
+// SEND CHAT MESSAGE
+// =============================================
+
 function sendNovaChatMessage(message) {
   const cleanMessage = message.trim();
-  if (!cleanMessage) return;
+  if (!cleanMessage || !novaChatInput) return;
 
   addNovaChatMessage(cleanMessage, "user");
 
@@ -784,6 +931,10 @@ function sendNovaChatMessage(message) {
     addNovaChatMessage(answer, "bot");
   }, 450);
 }
+
+// =============================================
+// CHAT EVENTS
+// =============================================
 
 if (
   novaChatPanel &&
@@ -834,11 +985,4 @@ if (
   });
 
   updateNovaChatLanguage(novaChatLanguage);
-
-  // Update widget whenever the website language changes.
-  if (languageSelect) {
-    languageSelect.addEventListener("change", event => {
-      updateNovaChatLanguage(event.target.value);
-    });
-  }
 }
