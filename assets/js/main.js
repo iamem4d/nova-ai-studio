@@ -1,198 +1,306 @@
 
 const translations = {
   en: {
-    nav_services:"Services", nav_work:"Our Work", nav_about:"About", nav_contact:"Contact", nav_start:"Let's talk ↗",
-    eyebrow:"INDEPENDENT AI & DIGITAL STUDIO",
-    hero_title:'Build <span class="gradient-text">beyond</span><br>what\'s possible.',
-    hero_desc:"We turn ambitious ideas into useful AI tools, smart websites and streamlined digital experiences.",
-    hero_cta:"Start a project", hero_secondary:"Explore our work",
-    hero_note:"Small studio. Thoughtful solutions.\nReal-world impact.",
-    strip:"IDEAS MADE USEFUL", services_kicker:"WHAT WE DO",
-    services_title:'Technology with <span class="gradient-text">purpose.</span>',
-    services_desc:"Practical digital services designed to make work simpler, faster and more effective.",
-    service1_title:"AI Tools & Prototypes", service1_desc:"Custom AI-powered tools, assistants and prototypes that solve focused problems.",
-    service2_title:"Websites & Experiences", service2_desc:"Responsive, modern websites that explain your value and help people take action.",
-    service3_title:"Workflow Automation", service3_desc:"Connect repetitive tasks into clear workflows and spend more time on meaningful work.",
-    card_link:"Discuss a project ↗", work_kicker:"SELECTED CONCEPTS",
-    work_title:'Ideas in <span class="gradient-text">progress.</span>',
-    work_desc:"A preview of the kinds of digital products we aim to create.\nConcept projects will be replaced with completed client work.",
-    work1_title:"Customer Support Assistant", work2_title:"Smart Workflow Dashboard",
-    about_kicker:"A LITTLE ABOUT US",
-    about_title:'Built on curiosity.<br><span class="gradient-text">Driven by usefulness.</span>',
-    about_desc:"Nova AI Studio is an independent digital studio exploring how thoughtful design and accessible technology can solve everyday business problems.\nWe value clear communication, useful outcomes and continuous learning.",
-    principle1:"Keep it clear", principle2:"Build with purpose", principle3:"Improve continuously",
-    contact_kicker:"HAVE AN IDEA?",
-    contact_title:'Let\'s make it <span class="gradient-text">real.</span>',
-    contact_desc:"Tell us what you're thinking.\nWe'll explore a practical way to move it forward.",
-    contact_status:"OPEN TO PROJECT INQUIRIES",
-    contact_placeholder:"Add your preferred public contact email or project form here before launch.",
-    contact_button:"Email Nova AI Studio ↗",
-    contact_edit:"Replace hello@example.com with an email address you are authorized to use.",
-    footer_line:"Independent thinking. Intelligent building."
-  },
-
-  fr: {
-    nav_services:"Services", nav_work:"Nos projets", nav_about:"À propos", nav_contact:"Contact", nav_start:"Parlons-en ↗",
-    eyebrow:"STUDIO INDÉPENDANT IA & DIGITAL",
-    hero_title:'Aller <span class="gradient-text">plus loin</span><br>que possible.',
-    hero_desc:"Nous transformons les idées ambitieuses en outils d’IA utiles, sites web intelligents et expériences numériques fluides.",
-    hero_cta:"Démarrer un projet", hero_secondary:"Voir nos projets",
-    hero_note:"Petit studio. Solutions réfléchies.\nImpact concret.",
-    strip:"DES IDÉES UTILES", services_kicker:"NOS SERVICES",
-    services_title:'La technologie avec <span class="gradient-text">un objectif.</span>',
-    services_desc:"Des services numériques pratiques pour rendre le travail plus simple, rapide et efficace.",
-    service1_title:"Outils IA et prototypes", service1_desc:"Des outils, assistants et prototypes personnalisés basés sur l’IA.",
-    service2_title:"Sites web et expériences", service2_desc:"Des sites modernes et adaptatifs qui présentent votre valeur et encouragent l’action.",
-    service3_title:"Automatisation des flux", service3_desc:"Reliez les tâches répétitives dans des processus clairs.",
-    card_link:"Parlons du projet ↗", work_kicker:"CONCEPTS SÉLECTIONNÉS",
-    work_title:'Des idées en <span class="gradient-text">construction.</span>',
-    work_desc:"Un aperçu des produits numériques que nous souhaitons créer.\nCes concepts seront remplacés par des projets clients réalisés.",
-    work1_title:"Assistant de support client", work2_title:"Tableau de bord intelligent",
-    about_kicker:"À PROPOS",
-    about_title:'Nés de la curiosité.<br><span class="gradient-text">Guidés par l’utilité.</span>',
-    about_desc:"Nova AI Studio est un studio numérique indépendant qui explore comment le design réfléchi et les technologies accessibles peuvent résoudre les problèmes quotidiens des entreprises.",
-    principle1:"Rester clair", principle2:"Créer avec un objectif", principle3:"S’améliorer continuellement",
-    contact_kicker:"UNE IDÉE EN TÊTE ?",
-    contact_title:'Donnons-lui <span class="gradient-text">vie.</span>',
-    contact_desc:"Parlez-nous de votre idée.\nExplorons une façon concrète de la faire avancer.",
-    contact_status:"OUVERT AUX DEMANDES DE PROJET",
-    contact_placeholder:"Ajoutez ici votre adresse e-mail publique ou votre formulaire avant le lancement.",
-    contact_button:"Écrire à Nova AI Studio ↗",
-    contact_edit:"Remplacez hello@example.com par une adresse que vous êtes autorisé à utiliser.",
-    footer_line:"Esprit indépendant. Création intelligente."
-  },
-
-  de: {
-    nav_services:"Leistungen", nav_work:"Projekte", nav_about:"Über uns", nav_contact:"Kontakt", nav_start:"Kontakt aufnehmen ↗",
-    eyebrow:"UNABHÄNGIGES KI- & DIGITALSTUDIO",
-    hero_title:'Mehr <span class="gradient-text">möglich</span><br>machen.',
-    hero_desc:"Wir verwandeln ambitionierte Ideen in nützliche KI-Tools, moderne Websites und effiziente digitale Erlebnisse.",
-    hero_cta:"Projekt starten", hero_secondary:"Projekte ansehen",
-    hero_note:"Kleines Studio. Durchdachte Lösungen.\nWirkung im Alltag.",
-    strip:"IDEEN, DIE NÜTZEN", services_kicker:"WAS WIR TUN",
-    services_title:'Technologie mit <span class="gradient-text">Sinn.</span>',
-    services_desc:"Praktische digitale Leistungen, die Arbeit einfacher, schneller und effektiver machen.",
-    service1_title:"KI-Tools & Prototypen", service1_desc:"Individuelle KI-Tools, Assistenten und Prototypen für konkrete Aufgaben.",
-    service2_title:"Websites & digitale Erlebnisse", service2_desc:"Moderne, responsive Websites, die Ihren Mehrwert vermitteln.",
-    service3_title:"Workflow-Automatisierung", service3_desc:"Wiederkehrende Aufgaben in klare Abläufe verwandeln.",
-    card_link:"Projekt besprechen ↗", work_kicker:"AUSGEWÄHLTE KONZEPTE",
-    work_title:'Ideen in <span class="gradient-text">Arbeit.</span>',
-    work_desc:"Ein Einblick in mögliche digitale Produkte.\nKonzeptarbeiten werden später durch abgeschlossene Kundenprojekte ersetzt.",
-    work1_title:"Kundenservice-Assistent", work2_title:"Intelligentes Workflow-Dashboard",
-    about_kicker:"ÜBER UNS",
-    about_title:'Aus Neugier gebaut.<br><span class="gradient-text">Mit Nutzen im Fokus.</span>',
-    about_desc:"Nova AI Studio ist ein unabhängiges Digitalstudio.\nWir erkunden, wie durchdachtes Design und zugängliche Technologie alltägliche Geschäftsprobleme lösen können.",
-    principle1:"Klar bleiben", principle2:"Mit Sinn entwickeln", principle3:"Stetig verbessern",
-    contact_kicker:"EINE IDEE?",
-    contact_title:'Machen wir sie <span class="gradient-text">real.</span>',
-    contact_desc:"Erzählen Sie uns von Ihrer Idee.\nGemeinsam finden wir einen praktischen nächsten Schritt.",
-    contact_status:"OFFEN FÜR PROJEKTANFRAGEN",
-    contact_placeholder:"Fügen Sie vor dem Start Ihre öffentliche Kontakt-E-Mail oder ein Kontaktformular hinzu.",
-    contact_button:"Nova AI Studio schreiben ↗",
-    contact_edit:"Ersetzen Sie hello@example.com durch eine Adresse, die Sie verwenden dürfen.",
-    footer_line:"Unabhängig denken. Intelligent gestalten."
+    nav_services: "Services",
+    nav_work: "Our Work",
+    nav_about: "About",
+    nav_contact: "Contact",
+    nav_start: "Let's Talk",
+    eyebrow: "Independent Digital Studio",
+    hero_title: "Ideas into <span>digital experiences.</span>",
+    hero_desc: "Nova AI Studio creates modern websites and digital experiences for ambitious brands and businesses.",
+    hero_cta: "Explore Services",
+    hero_secondary: "View Our Work",
+    hero_note: "Creative thinking. Smart technology. Digital impact.",
+    strip: "DESIGN • DEVELOPMENT • AI • DIGITAL EXPERIENCES",
+    services_kicker: "WHAT WE DO",
+    services_title: "Digital solutions built for growth.",
+    services_desc: "We combine creativity, technology and strategy to build meaningful digital experiences.",
+    service1_title: "Web Design",
+    service1_desc: "Modern, responsive and visually engaging websites designed around your brand.",
+    service2_title: "Web Development",
+    service2_desc: "Fast, functional and reliable websites built with modern web technologies.",
+    service3_title: "AI Solutions",
+    service3_desc: "Practical AI-powered experiences that help businesses work smarter.",
+    card_link: "Learn more",
+    work_kicker: "SELECTED CONCEPTS",
+    work_title: "Ideas brought to life.",
+    work_desc: "A preview of the visual direction and digital experiences we aim to create.",
+    work1_title: "Digital Brand Experience",
+    work2_title: "Future Commerce Concept",
+    about_kicker: "ABOUT NOVA",
+    about_title: "Technology meets creativity.",
+    about_desc: "Nova AI Studio is an independent digital studio focused on thoughtful design, modern development and useful AI experiences.",
+    principle1: "Creative by design",
+    principle2: "Built with technology",
+    principle3: "Focused on real value",
+    contact_kicker: "LET'S CONNECT",
+    contact_title: "Have an idea in mind?",
+    contact_desc: "Tell us what you are planning. Let's explore what we can create together.",
+    contact_status: "Contact details will be added soon.",
+    contact_placeholder: "Your project starts with an idea.",
+    contact_edit: "This section is being updated.",
+    footer_line: "Designed for the next digital era."
   },
 
   ar: {
-    nav_services:"الخدمات", nav_work:"أعمالنا", nav_about:"من نحن", nav_contact:"اتصل بنا", nav_start:"لنتحدث ↗",
-    eyebrow:"استوديو مستقل للذكاء الاصطناعي والتقنية",
-    hero_title:'نبني ما هو <span class="gradient-text">أبعد</span><br>من المتوقع.',
-    hero_desc:"نحوّل الأفكار الطموحة إلى أدوات ذكاء اصطناعي مفيدة ومواقع ذكية وتجارب رقمية سلسة.",
-    hero_cta:"ابدأ مشروعًا", hero_secondary:"اكتشف أعمالنا",
-    hero_note:"استوديو صغير. حلول مدروسة.\nأثر حقيقي.",
-    strip:"أفكار تتحول إلى فائدة", services_kicker:"ماذا نقدم",
-    services_title:'تقنية <span class="gradient-text">بهدف واضح.</span>',
-    services_desc:"خدمات رقمية عملية تجعل العمل أبسط وأسرع وأكثر فعالية.",
-    service1_title:"أدوات ونماذج الذكاء الاصطناعي", service1_desc:"أدوات ومساعدون ونماذج مخصصة مدعومة بالذكاء الاصطناعي لحل مشكلات محددة.",
-    service2_title:"المواقع والتجارب الرقمية", service2_desc:"مواقع حديثة ومتجاوبة توضّح قيمة عملك وتشجع الزوار على التفاعل.",
-    service3_title:"أتمتة سير العمل", service3_desc:"حوّل المهام المتكررة إلى خطوات واضحة ووفّر وقتك للأعمال المهمة.",
-    card_link:"ناقش مشروعًا ↗", work_kicker:"نماذج مختارة",
-    work_title:'أفكار قيد <span class="gradient-text">التطوير.</span>',
-    work_desc:"لمحة عن المنتجات الرقمية التي نطمح إلى إنشائها.\nستُستبدل النماذج بمشاريع عملاء مكتملة.",
-    work1_title:"مساعد خدمة العملاء", work2_title:"لوحة تحكم ذكية لسير العمل",
-    about_kicker:"نبذة عنا",
-    about_title:'بدأنا بالفضول.<br><span class="gradient-text">ويقودنا تحقيق الفائدة.</span>',
-    about_desc:"Nova AI Studio استوديو رقمي مستقل يستكشف كيف يمكن للتصميم المدروس والتقنية المتاحة حل مشكلات الأعمال اليومية.\nنؤمن بالتواصل الواضح والنتائج المفيدة والتعلم المستمر.",
-    principle1:"الوضوح أولاً", principle2:"نبني بهدف", principle3:"نتحسن باستمرار",
-    contact_kicker:"هل لديك فكرة؟",
-    contact_title:'لنجعلها <span class="gradient-text">حقيقة.</span>',
-    contact_desc:"أخبرنا بما تفكر فيه، وسنبحث عن طريقة عملية لتطويره.",
-    contact_status:"نستقبل طلبات المشاريع",
-    contact_placeholder:"أضف بريد التواصل العام أو نموذج المشروع هنا قبل الإطلاق.",
-    contact_button:"راسل Nova AI Studio ↗",
-    contact_edit:"استبدل hello@example.com بعنوان بريد يُسمح لك باستخدامه.",
-    footer_line:"تفكير مستقل.\nبناء ذكي."
+    nav_services: "الخدمات",
+    nav_work: "أعمالنا",
+    nav_about: "من نحن",
+    nav_contact: "اتصل بنا",
+    nav_start: "لنتحدث",
+    eyebrow: "استوديو رقمي مستقل",
+    hero_title: "نحوّل الأفكار إلى <span>تجارب رقمية.</span>",
+    hero_desc: "يقدم Nova AI Studio مواقع حديثة وتجارب رقمية للعلامات التجارية والشركات الطموحة.",
+    hero_cta: "اكتشف خدماتنا",
+    hero_secondary: "شاهد أعمالنا",
+    hero_note: "إبداع. تقنية ذكية. تأثير رقمي.",
+    strip: "التصميم • التطوير • الذكاء الاصطناعي • التجارب الرقمية",
+    services_kicker: "ماذا نقدم",
+    services_title: "حلول رقمية تدعم النمو.",
+    services_desc: "نجمع بين الإبداع والتقنية والاستراتيجية لبناء تجارب رقمية مميزة.",
+    service1_title: "تصميم المواقع",
+    service1_desc: "مواقع حديثة ومتجاوبة وجذابة بصرياً تعكس هوية علامتك التجارية.",
+    service2_title: "تطوير المواقع",
+    service2_desc: "مواقع سريعة وعملية وموثوقة باستخدام تقنيات الويب الحديثة.",
+    service3_title: "حلول الذكاء الاصطناعي",
+    service3_desc: "تجارب عملية مدعومة بالذكاء الاصطناعي لمساعدة الشركات على العمل بذكاء.",
+    card_link: "اعرف المزيد",
+    work_kicker: "نماذج مختارة",
+    work_title: "أفكار تتحول إلى واقع.",
+    work_desc: "نظرة على أسلوبنا البصري والتجارب الرقمية التي نطمح إلى تقديمها.",
+    work1_title: "تجربة علامة تجارية رقمية",
+    work2_title: "مفهوم التجارة المستقبلية",
+    about_kicker: "عن نوفا",
+    about_title: "حيث تلتقي التقنية بالإبداع.",
+    about_desc: "Nova AI Studio استوديو رقمي مستقل يركز على التصميم المدروس والتطوير الحديث وتجارب الذكاء الاصطناعي المفيدة.",
+    principle1: "الإبداع في التصميم",
+    principle2: "التطوير بالتقنية",
+    principle3: "التركيز على القيمة",
+    contact_kicker: "لنتواصل",
+    contact_title: "هل لديك فكرة؟",
+    contact_desc: "أخبرنا بما تخطط له، ولنكتشف ما يمكننا إنشاؤه معاً.",
+    contact_status: "ستتم إضافة بيانات التواصل قريباً.",
+    contact_placeholder: "يبدأ مشروعك بفكرة.",
+    contact_edit: "هذا القسم قيد التحديث.",
+    footer_line: "مصمم للعصر الرقمي القادم."
+  },
+
+  fr: {
+    nav_services: "Services",
+    nav_work: "Projets",
+    nav_about: "À propos",
+    nav_contact: "Contact",
+    nav_start: "Discutons",
+    eyebrow: "Studio numérique indépendant",
+    hero_title: "Des idées aux <span>expériences numériques.</span>",
+    hero_desc: "Nova AI Studio crée des sites web modernes et des expériences numériques pour les marques ambitieuses.",
+    hero_cta: "Découvrir les services",
+    hero_secondary: "Voir nos projets",
+    hero_note: "Créativité. Technologie intelligente. Impact numérique.",
+    strip: "DESIGN • DÉVELOPPEMENT • IA • EXPÉRIENCES NUMÉRIQUES",
+    services_kicker: "NOS SERVICES",
+    services_title: "Des solutions numériques pour grandir.",
+    services_desc: "Nous associons créativité, technologie et stratégie pour créer des expériences numériques utiles.",
+    service1_title: "Design web",
+    service1_desc: "Des sites modernes, adaptatifs et visuellement attractifs, conçus pour votre marque.",
+    service2_title: "Développement web",
+    service2_desc: "Des sites rapides, fonctionnels et fiables, conçus avec des technologies modernes.",
+    service3_title: "Solutions IA",
+    service3_desc: "Des expériences pratiques basées sur l'IA pour aider les entreprises à travailler plus intelligemment.",
+    card_link: "En savoir plus",
+    work_kicker: "PROJETS CONCEPTUELS",
+    work_title: "Des idées qui prennent vie.",
+    work_desc: "Un aperçu de notre direction visuelle et des expériences numériques que nous souhaitons créer.",
+    work1_title: "Expérience de marque numérique",
+    work2_title: "Concept de commerce du futur",
+    about_kicker: "À PROPOS DE NOVA",
+    about_title: "La technologie rencontre la créativité.",
+    about_desc: "Nova AI Studio est un studio numérique indépendant axé sur le design réfléchi, le développement moderne et les expériences IA utiles.",
+    principle1: "La créativité avant tout",
+    principle2: "Conçu avec la technologie",
+    principle3: "Axé sur la valeur réelle",
+    contact_kicker: "CONTACTONS-NOUS",
+    contact_title: "Vous avez une idée ?",
+    contact_desc: "Parlez-nous de votre projet. Découvrons ce que nous pouvons créer ensemble.",
+    contact_status: "Les coordonnées seront ajoutées bientôt.",
+    contact_placeholder: "Votre projet commence par une idée.",
+    contact_edit: "Cette section est en cours de mise à jour.",
+    footer_line: "Conçu pour la prochaine ère numérique."
+  },
+
+  de: {
+    nav_services: "Leistungen",
+    nav_work: "Projekte",
+    nav_about: "Über uns",
+    nav_contact: "Kontakt",
+    nav_start: "Kontakt aufnehmen",
+    eyebrow: "Unabhängiges Digitalstudio",
+    hero_title: "Aus Ideen werden <span>digitale Erlebnisse.</span>",
+    hero_desc: "Nova AI Studio entwickelt moderne Websites und digitale Erlebnisse für ambitionierte Marken und Unternehmen.",
+    hero_cta: "Leistungen entdecken",
+    hero_secondary: "Projekte ansehen",
+    hero_note: "Kreativität. Intelligente Technologie. Digitale Wirkung.",
+    strip: "DESIGN • ENTWICKLUNG • KI • DIGITALE ERLEBNISSE",
+    services_kicker: "UNSERE LEISTUNGEN",
+    services_title: "Digitale Lösungen für Wachstum.",
+    services_desc: "Wir verbinden Kreativität, Technologie und Strategie zu überzeugenden digitalen Erlebnissen.",
+    service1_title: "Webdesign",
+    service1_desc: "Moderne, responsive und ansprechende Websites, passend zu Ihrer Marke.",
+    service2_title: "Webentwicklung",
+    service2_desc: "Schnelle, funktionale und zuverlässige Websites mit modernen Technologien.",
+    service3_title: "KI-Lösungen",
+    service3_desc: "Praktische KI-Erlebnisse, die Unternehmen helfen, intelligenter zu arbeiten.",
+    card_link: "Mehr erfahren",
+    work_kicker: "AUSGEWÄHLTE KONZEPTE",
+    work_title: "Ideen werden Wirklichkeit.",
+    work_desc: "Ein Einblick in unsere visuelle Ausrichtung und die digitalen Erlebnisse, die wir schaffen möchten.",
+    work1_title: "Digitales Markenerlebnis",
+    work2_title: "Zukunft des Handels",
+    about_kicker: "ÜBER NOVA",
+    about_title: "Technologie trifft Kreativität.",
+    about_desc: "Nova AI Studio ist ein unabhängiges Digitalstudio mit Fokus auf durchdachtes Design, moderne Entwicklung und nützliche KI-Erlebnisse.",
+    principle1: "Kreativ gestaltet",
+    principle2: "Mit Technologie entwickelt",
+    principle3: "Auf echten Mehrwert ausgerichtet",
+    contact_kicker: "LASS UNS REDEN",
+    contact_title: "Haben Sie eine Idee?",
+    contact_desc: "Erzählen Sie uns von Ihrem Vorhaben. Gemeinsam finden wir heraus, was wir schaffen können.",
+    contact_status: "Kontaktdaten werden bald hinzugefügt.",
+    contact_placeholder: "Ihr Projekt beginnt mit einer Idee.",
+    contact_edit: "Dieser Bereich wird gerade aktualisiert.",
+    footer_line: "Gestaltet für das digitale Zeitalter von morgen."
   },
 
   zh: {
-    nav_services:"服务", nav_work:"项目作品", nav_about:"关于我们", nav_contact:"联系", nav_start:"联系我们 ↗",
-    eyebrow:"独立人工智能与数字工作室",
-    hero_title:'突破<span class="gradient-text">可能</span><br>创造更多。',
-    hero_desc:"我们将有抱负的想法转化为实用的人工智能工具、智能网站和流畅的数字体验。",
-    hero_cta:"开始项目", hero_secondary:"查看作品",
-    hero_note:"小型工作室。深思熟虑的方案。切实的影响。",
-    strip:"让创意发挥价值", services_kicker:"我们的服务",
-    services_title:'让技术拥有<span class="gradient-text">明确目标。</span>',
-    services_desc:"实用的数字服务，让工作更简单、更快速、更高效。",
-    service1_title:"人工智能工具与原型", service1_desc:"定制人工智能工具、助手和原型，解决具体问题。",
-    service2_title:"网站与数字体验", service2_desc:"现代化响应式网站，清晰展示价值并帮助访客采取行动。",
-    service3_title:"工作流程自动化", service3_desc:"将重复任务连接成清晰流程，把时间留给更重要的工作。",
-    card_link:"讨论项目 ↗", work_kicker:"精选概念",
-    work_title:'正在实现的<span class="gradient-text">创意。</span>',
-    work_desc:"展示我们希望打造的数字产品类型。概念项目将逐步替换为已完成的客户项目。",
-    work1_title:"客户支持助手", work2_title:"智能工作流程仪表板",
-    about_kicker:"关于我们",
-    about_title:'源于好奇。<br><span class="gradient-text">致力于实用。</span>',
-    about_desc:"Nova AI Studio 是一家独立数字工作室，探索如何通过用心的设计和易用的技术解决日常商业问题。我们重视清晰沟通、实用成果和持续学习。",
-    principle1:"保持清晰", principle2:"有目标地构建", principle3:"持续改进",
-    contact_kicker:"有一个想法？",
-    contact_title:'让它成为<span class="gradient-text">现实。</span>',
-    contact_desc:"告诉我们你的想法。我们将一起探索切实可行的推进方式。",
-    contact_status:"欢迎项目咨询",
-    contact_placeholder:"上线前，请在此添加公开联系邮箱或项目联系表单。",
-    contact_button:"联系 Nova AI Studio ↗",
-    contact_edit:"请将 hello@example.com 替换为你获准使用的邮箱地址。",
-    footer_line:"独立思考。智能构建。"
+    nav_services: "服务",
+    nav_work: "作品",
+    nav_about: "关于我们",
+    nav_contact: "联系我们",
+    nav_start: "开始交流",
+    eyebrow: "独立数字工作室",
+    hero_title: "将创意转化为<span>数字体验。</span>",
+    hero_desc: "Nova AI Studio 为有远见的品牌和企业打造现代网站与数字体验。",
+    hero_cta: "探索服务",
+    hero_secondary: "查看作品",
+    hero_note: "创意、智能科技与数字影响力。",
+    strip: "设计 • 开发 • 人工智能 • 数字体验",
+    services_kicker: "我们的服务",
+    services_title: "助力成长的数字解决方案。",
+    services_desc: "融合创意、技术与策略，打造有价值的数字体验。",
+    service1_title: "网站设计",
+    service1_desc: "现代化、响应式且视觉出色的网站，展现您的品牌特色。",
+    service2_title: "网站开发",
+    service2_desc: "采用现代网页技术，打造快速、实用且可靠的网站。",
+    service3_title: "人工智能解决方案",
+    service3_desc: "利用实用的人工智能体验，帮助企业更高效地工作。",
+    card_link: "了解更多",
+    work_kicker: "精选概念作品",
+    work_title: "让创意成为现实。",
+    work_desc: "了解我们的视觉方向以及我们希望打造的数字体验。",
+    work1_title: "数字品牌体验",
+    work2_title: "未来商业概念",
+    about_kicker: "关于 NOVA",
+    about_title: "科技与创意相遇。",
+    about_desc: "Nova AI Studio 是一家独立数字工作室，专注于精心设计、现代开发和实用的人工智能体验。",
+    principle1: "以创意为核心",
+    principle2: "以技术为基础",
+    principle3: "注重实际价值",
+    contact_kicker: "联系我们",
+    contact_title: "您有一个想法吗？",
+    contact_desc: "告诉我们您的计划，一起探索可以创造什么。",
+    contact_status: "联系方式即将添加。",
+    contact_placeholder: "您的项目始于一个想法。",
+    contact_edit: "此部分正在更新。",
+    footer_line: "为下一个数字时代而设计。"
   }
 };
 
-function setLanguage(lang) {
-  const dict = translations[lang] || translations.en;
+const languageSelect = document.getElementById("languageSelect");
 
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+function setLanguage(language) {
+  const selectedLanguage = translations[language] ? language : "en";
+  const dictionary = translations[selectedLanguage];
 
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n;
-    if (dict[key] !== undefined) {
-      el.innerHTML = dict[key].replace(/\n/g, "<br>");
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+
+    if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+      element.innerHTML = dictionary[key];
     }
   });
 
-  const selector = document.getElementById("languageSelect");
-  if (selector) selector.value = lang;
+  document.documentElement.lang = selectedLanguage;
+  document.documentElement.dir = selectedLanguage === "ar" ? "rtl" : "ltr";
+
+  if (languageSelect) {
+    languageSelect.value = selectedLanguage;
+  }
 
   try {
-    localStorage.setItem("nova-language", lang);
-  } catch (e) {}
+    localStorage.setItem("nova-language", selectedLanguage);
+  } catch (error) {
+    // The site still works if browser storage is unavailable.
+  }
 }
 
-const languageSelect = document.getElementById("languageSelect");
-
 if (languageSelect) {
-  languageSelect.addEventListener("change", e => {
-    setLanguage(e.target.value);
+  languageSelect.addEventListener("change", (event) => {
+    setLanguage(event.target.value);
   });
 }
 
+let savedLanguage = "en";
+
+try {
+  savedLanguage = localStorage.getItem("nova-language") || "en";
+} catch (error) {
+  savedLanguage = "en";
+}
+
+setLanguage(savedLanguage);
+
+// Mobile navigation
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (menuToggle && mobileMenu) {
+  function closeMobileMenu() {
+    mobileMenu.classList.remove("open");
+    menuToggle.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("open");
+
+    menuToggle.classList.toggle("active", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      !mobileMenu.contains(event.target) &&
+      !menuToggle.contains(event.target)
+    ) {
+      closeMobileMenu();
+    }
+  });
+}
+
+// Automatic footer year
 const yearElement = document.getElementById("year");
+
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
-
-let saved = "en";
-try {
-  saved = localStorage.getItem("nova-language") || "en";
-} catch (e) {}
-
-setLanguage(saved);
