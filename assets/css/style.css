@@ -1249,3 +1249,155 @@ html[dir="rtl"] .footer-inner {
     transition-duration: .01ms !important;
   }
 }
+
+/* =================================
+   NOVA CONTACT FORM
+================================= */
+
+.contact-form {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+  margin: 42px auto 0;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  text-align: left;
+  background: rgba(10, 20, 35, 0.72);
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  border-radius: 22px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+}
+
+.contact-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.contact-form .form-group:last-of-type {
+  grid-column: 1 / -1;
+}
+
+.contact-form label {
+  color: #d8e9f5;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 14px 16px;
+  color: #f4f9ff;
+  font: inherit;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(140, 180, 210, 0.2);
+  border-radius: 11px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #718397;
+}
+
+.contact-form select {
+  color-scheme: dark;
+  cursor: pointer;
+}
+
+.contact-form select option {
+  color: #f4f9ff;
+  background: #101b2b;
+}
+
+.contact-form textarea {
+  min-height: 145px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: #00d9ff;
+  background: rgba(0, 217, 255, 0.045);
+  box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1),
+              0 0 20px rgba(0, 217, 255, 0.07);
+}
+
+.contact-form button {
+  grid-column: 1 / -1;
+  justify-self: stretch;
+  width: 100%;
+  min-height: 54px;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.contact-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 217, 255, 0.18);
+}
+
+.contact-form button:focus-visible {
+  outline: 2px solid #00d9ff;
+  outline-offset: 4px;
+}
+
+/* RTL support */
+
+html[dir="rtl"] .contact-form {
+  text-align: right;
+}
+
+html[dir="rtl"] .contact-form input,
+html[dir="rtl"] .contact-form select,
+html[dir="rtl"] .contact-form textarea {
+  text-align: right;
+}
+
+/* Mobile layout */
+
+@media (max-width: 620px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+    padding: 22px 17px;
+    gap: 19px;
+    margin-top: 30px;
+  }
+
+  .contact-form .form-group:last-of-type,
+  .contact-form button {
+    grid-column: auto;
+  }
+
+  .contact-form input,
+  .contact-form select {
+    min-height: 48px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea,
+  .contact-form button {
+    transition: none;
+  }
+}
