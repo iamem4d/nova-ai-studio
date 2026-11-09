@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d16">
+<title>AI Support Assistant | Nova AI Studio</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at 50% 0%,#102a3b,#080d16 55%);
+  color:#eaf5ff;
+  font-family:Inter,Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.app{
+  width:100%;
+  max-width:850px;
+  height:min(780px,90vh);
+  min-height:560px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid #1d4052;
+  border-radius:20px;
+  background:rgba(10,20,32,.92);
+  box-shadow:0 20px 80px #0008,0 0 45px #00d9ff12;
+}
+.header{
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #1b3445;
+  background:#0c1825;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:42px;height:42px;border-radius:12px;
+  display:grid;place-items:center;
+  background:#00d9ef18;border:1px solid #00d9ef66;
+  color:#00e5ff;font-size:23px;font-weight:bold;
+}
+.brand h1{font-size:16px;letter-spacing:1px}
+.brand p{font-size:11px;color:#849bac;margin-top:5px}
+.status{font-size:12px;color:#64e8ad}
+.status i{
+  display:inline-block;width:7px;height:7px;
+  background:#45e8a0;border-radius:50%;margin-right:6px;
+}
+.chat{
+  flex:1;overflow-y:auto;padding:25px;
+  display:flex;flex-direction:column;gap:18px;
+}
+.message{
+  max-width:82%;padding:14px 17px;
+  border-radius:15px;font-size:14px;line-height:1.7;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+.bot{
+  align-self:flex-start;
+  background:#142638;border:1px solid #25465a;
+  border-bottom-left-radius:4px;
+}
+.user{
+  align-self:flex-end;
+  background:#063d50;border:1px solid #08718a;
+  border-bottom-right-radius:4px;
+}
+.time{display:block;font-size:10px;color:#8299a9;margin-top:6px}
+.suggestions{
+  display:flex;flex-wrap:wrap;gap:9px;
+  padding:0 25px 17px;
+}
+.suggestion{
+  padding:9px 13px;border-radius:20px;
+  border:1px solid #24556b;background:#102333;
+  color:#9defff;font-size:12px;cursor:pointer;
+  transition:.2s;
+}
+.suggestion:hover{background:#16465a;border-color:#00d9ef}
+.input-area{
+  padding:18px 22px;
+  border-top:1px solid #1b3445;
+  background:#0c1825;
+}
+.input-row{display:flex;gap:10px}
+input{
+  min-width:0;flex:1;padding:15px;
+  border-radius:11px;border:1px solid #25465a;
+  background:#101f2e;color:white;outline:none;
+  font-size:14px;
+}
+input:focus{border-color:#00d9ef}
+button{
+  border:0;cursor:pointer;font-weight:bold;
+}
+.send{
+  width:52px;border-radius:11px;
+  background:#00d9ef;color:#07131c;font-size:20px;
+}
+.send:hover{background:#70f0ff}
+.footer{
+  text-align:center;color:#61798b;
+  font-size:10px;margin-top:13px;
+}
+.footer a{color:#00d9ef;text-decoration:none}
+@media(max-width:500px){
+  body{padding:0}
+  .app{height:100vh;min-height:0;border-radius:0;border:0}
+  .chat{padding:18px}
+  .message{max-width:90%}
+  .suggestions{padding:0 18px 15px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="brand">
+      <div class="logo">N.</div>
+      <div>
+        <h1>NOVA AI SUPPORT</h1>
+        <p>Customer Support Assistant</p>
+      </div>
+    </div>
+    <div class="status"><i></i>Online</div>
+  </header>
+
+  <main class="chat" id="chat">
+    <div class="message bot">
+      Hello! Welcome to Nova AI Support.
+
+      I'm your virtual support assistant. How can I help you today?
+      <span class="time">Nova Assistant</span>
+    </div>
+  </main>
+
+  <div class="suggestions">
+    <button class="suggestion" data-question="What services do you offer?">Our Services</button>
+    <button class="suggestion" data-question="How can I request a website?">Request a Website</button>
+    <button class="suggestion" data-question="How can I contact your team?">Contact Support</button>
+    <button class="suggestion" data-question="What are your working hours?">Working Hours</button>
+  </div>
+
+  <form class="input-area" id="chatForm">
+    <div class="input-row">
+      <input id="userInput" type="text" placeholder="Type your message..." autocomplete="off" required>
+      <button class="send" type="submit" aria-label="Send message">➤</button>
+    </div>
+    <div class="footer">
+      Demo experience by <a href="index.html">Nova AI Studio</a>
+    </div>
+  </form>
+
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+const form = document.getElementById("chatForm");
+const input = document.getElementById("userInput");
+
+const answers = [
+  {
+    keys:["service","services","offer","خدمات"],
+    reply:"Nova AI Studio offers three main services:\n\n✳ AI Tools & Prototypes\n⌘ Websites & Digital Experiences\n⟳ Workflow Automation\n\nWould you like to know more about one of them?"
+  },
+  {
+    keys:["website","web site","design","سایت"],
+    reply:"We can help you create a modern, responsive website tailored to your needs.\n\nTo get started, visit the Contact section on our main website and send us your project details."
+  },
+  {
+    keys:["contact","email","support","تماس"],
+    reply:"You can contact the Nova team through the Contact form on our main website:\n\nOpen the homepage and navigate to the Contact section. We'll review your message and get back to you."
+  },
+  {
+    keys:["hour","hours","time","ساعت"],
+    reply:"Nova AI Studio is an independent digital studio. Please use our Contact form to discuss project availability and response times."
+  },
+  {
+    keys:["price","pricing","cost","budget","قیمت"],
+    reply:"Project pricing depends on the features, complexity and requirements.\n\nSend us your project details through the Contact form to discuss your needs."
+  },
+  {
+    keys:["hello","hi","hey","سلام"],
+    reply:"Hello! Welcome to Nova AI Studio. What can I help you with today?"
+  },
+  {
+    keys:["thank","thanks","ممنون"],
+    reply:"You're welcome! If you need anything else, I'm here to help."
+  }
+];
+
+function addMessage(text,type){
+  const message=document.createElement("div");
+  message.className="message "+type;
+  message.appendChild(document.createTextNode(text));
+
+  const time=document.createElement("span");
+  time.className="time";
+  time.textContent=type==="bot"?"Nova Assistant":"You";
+  message.appendChild(time);
+
+  chat.appendChild(message);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function getAnswer(text){
+  const normalized=text.toLowerCase();
+
+  for(const item of answers){
+    if(item.keys.some(key=>normalized.includes(key))){
+      return item.reply;
+    }
+  }
+
+  return "Thanks for your message!\n\nI don't have a specific answer for that question in this demo yet. Please contact our team through the Contact form on the Nova homepage.";
+}
+
+function sendMessage(text){
+  const value=text.trim();
+  if(!value)return;
+
+  addMessage(value,"user");
+  input.value="";
+
+  setTimeout(()=>{
+    addMessage(getAnswer(value),"bot");
+  },450);
+}
+
+form.addEventListener("submit",event=>{
+  event.preventDefault();
+  sendMessage(input.value);
+});
+
+document.querySelectorAll(".suggestion").forEach(button=>{
+  button.addEventListener("click",()=>{
+    sendMessage(button.dataset.question);
+  });
+});
+</script>
+</body>
+</html>
