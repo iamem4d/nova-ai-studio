@@ -182,85 +182,107 @@ let downloadStarted = false;
     }, 5500);
   }
 
-  function getMergedBufferedRanges() {
-    const ranges = [];
+function setProgress(value) {
+  value = Math.max(0, Math.min(100, Math.floor(value)));
 
-    for (let i = 0; i < video.buffered.length; i++) {
-      ranges.push({
-        start: video.buffered.start(i),
-        end: video.buffered.end(i)
-      });
+  percent.textContent = new Intl.NumberFormat(
+    locales[currentLanguage]
+  ).format(value);
+
+  bar.style.width = `${value}%`;
+}
+
+async function downloadFullVideo() {
+  if (downloadStarted || finished) return;
+
+  downloadStarted = true;
+
+  try {
+    const source = video.querySelector("source");
+
+    const videoUrl = source
+      ? source.src
+      : video.currentSrc || video.src;
+
+    const response = await fetch(videoUrl, {
+      cache: "force-cache"
+    });
+
+    if (!response.ok) {
+      throw new Error("Video download failed");
     }
 
-    ranges.sort((a, b) => a.start - b.start);
-
-    const merged = [];
-
-    for (const range of ranges) {
-      const last = merged[merged.length - 1];
-
-      if (last && range.start <= last.end + 0.15) {
-        last.end = Math.max(last.end, range.end);
-      } else {
-        merged.push({ ...range });
-      }
-    }
-
-    return merged;
-  }
-
-  function getBufferProgress() {
-    if (!Number.isFinite(video.duration) || video.duration <= 0) {
-      return 0;
-    }
-
-    const ranges = getMergedBufferedRanges();
-
-    const bufferedSeconds = ranges.reduce(
-      (total, range) => total + (range.end - range.start),
-      0
+    const total = Number(
+      response.headers.get("content-length")
     );
 
-    return Math.min(
-      100,
-      Math.floor((bufferedSeconds / video.duration) * 100)
-    );
-  }
+    if (!response.body || !total) {
+      const blob = await response.blob();
 
-  function isFullyBuffered() {
-    if (!Number.isFinite(video.duration) || video.duration <= 0) {
-      return false;
-    }
+      setProgress(100);
 
-    const ranges = getMergedBufferedRanges();
-
-    if (!ranges.length) return false;
-
-    const first = ranges[0];
-    const last = ranges[ranges.length - 1];
-
-    return (
-      first.start <= 0.25 &&
-      last.end >= video.duration - 0.25 &&
-      ranges.length === 1
-    );
-  }
-
-  function updateProgress() {
-    if (finished) return;
-
-    const value = getBufferProgress();
-
-    percent.textContent = new Intl.NumberFormat(
-      locales[currentLanguage]
-    ).format(value);
-
-    bar.style.width = `${value}%`;
-
-    if (!videoFailed && isFullyBuffered()) {
-      finishPreloader();
+      await prepareVideo(blob);
       return;
     }
+
+    const reader = response.body.getReader();
+
+    const chunks = [];
+    let received = 0;
+
+    while (true) {
+      const { done, value } = await reader.read();
+
+      if (done) break;
+
+      chunks.push(value);
+      received += value.length;
+
+      setProgress((received / total) * 100);
+    }
+
+    const blob = new Blob(chunks, {
+      type: response.headers.get("content-type") || "video/mp4"
+    });
+
+    await prepareVideo(blob);
+
+  } catch (error) {
+    console.error("Nova video loading:", error);
+
+    videoFailed = true;
+
+    message.textContent = messages[currentLanguage].error;
+    submessage.textContent = "";
+
+    showContinueButton();
+  }
+}
+
+async function prepareVideo(blob) {
+  downloadObjectUrl = URL.createObjectURL(blob);
+
+  video.src = downloadObjectUrl;
+  video.load();
+
+  await new Promise((resolve, reject) => {
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      resolve();
+      return;
+    }
+
+    video.addEventListener("loadeddata", resolve, {
+      once: true
+    });
+
+    video.addEventListener("error", reject, {
+      once: true
+    });
+  });
+
+  setProgress(100);
+  finishPreloader();
+}
 
     requestAnimationFrame(updateProgress);
   }
