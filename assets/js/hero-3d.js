@@ -240,8 +240,8 @@ function initHero3D() {
       objectGroup.rotation.x += 0.001;
 
       // Mouse-based rotation
-      objectGroup.rotation.y += currentMouseX * 0.002;
-      objectGroup.rotation.x += currentMouseY * 0.002;
+objectGroup.rotation.y = Math.sin(Date.now() * 0.001) * 0.15 + currentMouseX * 0.35;
+objectGroup.rotation.x = Math.cos(Date.now() * 0.001) * 0.08 + currentMouseY * 0.35;
 
       // Scroll-based rotation
       objectGroup.rotation.y += currentScroll * 0.0015;
