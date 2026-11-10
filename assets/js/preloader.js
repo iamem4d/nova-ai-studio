@@ -261,11 +261,11 @@ const videoUrl = new URL(
 }
 
 async function prepareVideo(blob) {
-  downloadObjectUrl = URL.createObjectURL(blob);
+downloadObjectUrl = URL.createObjectURL(blob);
 
 video.removeAttribute("src");
-  video.src = downloadObjectUrl;
-  video.load();
+video.src = downloadObjectUrl;
+video.load();
 
   await new Promise((resolve, reject) => {
     if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
