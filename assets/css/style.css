@@ -83,8 +83,17 @@ html[dir="rtl"] body{font-family:var(--font)}html[dir="rtl"] .hero h1,html[dir="
    NOVA FILM — six-chapter, scroll-scrubbed experience
    ===================================================== */
 .nova-film{position:relative;z-index:3;background:#020202;color:#f5f5f5;isolation:isolate;overflow:clip}
-.nova-film-stage{position:relative;width:100%;height:100svh;min-height:540px;overflow:hidden;background:#020202;display:grid;place-items:center;isolation:isolate}
-.nova-film-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2;background:#020202}
+.nova-film-stage{
+  position:relative;
+  width:100%;
+  height:100svh;
+  min-height:540px;
+  overflow:hidden;
+  background:#020202;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+}.nova-film-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2;background:#020202}
 .nova-film-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#0009 0%,transparent 20%,transparent 66%,#000b 100%),radial-gradient(ellipse at center,transparent 28%,#0008 100%)}
 .nova-film-topline,.nova-film-bottomline{position:absolute;left:clamp(22px,5vw,76px);right:clamp(22px,5vw,76px);display:flex;align-items:center;justify-content:space-between;gap:20px;font:500 10px/1.4 var(--display);letter-spacing:.2em;color:#d7d7d7;text-shadow:0 1px 14px #000}
 .nova-film-topline{top:clamp(22px,4vh,44px)}
