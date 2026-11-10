@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d16">
+<title>AI Support Assistant | Nova AI Studio</title>
+<meta name="description" content="Explore Nova AI Studio's interactive customer support assistant demo and discover smart digital support experiences.">
+<link rel="canonical" href="https://iamem4d.github.io/nova-ai-studio/support-demo.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at 50% 0%,#102a3b,#080d16 55%);
+  color:#eaf5ff;
+  font-family:Inter,Arial,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.app{
+  width:100%;
+  max-width:850px;
+  height:min(780px,90vh);
+  min-height:560px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid #1d4052;
+  border-radius:20px;
+  background:rgba(10,20,32,.92);
+  box-shadow:0 20px 80px #0008,0 0 45px #00d9ff12;
+}
+
+.header{
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid #1b3445;
+  background:#0c1825;
+}
+
+.brand{display:flex;align-items:center;gap:12px}
+
+.logo{
+  width:42px;height:42px;border-radius:12px;
+  display:grid;place-items:center;
+  background:#00d9ef18;border:1px solid #00d9ef66;
+  color:#00e5ff;font-size:23px;font-weight:bold;
+}
+
+.brand h1{font-size:16px;letter-spacing:1px}
+.brand p{font-size:11px;color:#849bac;margin-top:5px}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.language-select{
+  padding:8px 10px;
+  border-radius:9px;
+  border:1px solid #24556b;
+  background:#102333;
+  color:#9defff;
+  font-size:12px;
+  outline:none;
+  cursor:pointer;
+}
+
+.status{font-size:12px;color:#64e8ad;white-space:nowrap}
+
+.status i{
+  display:inline-block;width:7px;height:7px;
+  background:#45e8a0;border-radius:50%;margin-right:6px;
+}
+
+.chat{
+  flex:1;overflow-y:auto;padding:25px;
+  display:flex;flex-direction:column;gap:18px;
+}
+
+.message{
+  max-width:82%;padding:14px 17px;
+  border-radius:15px;font-size:14px;line-height:1.8;
+  white-space:pre-wrap;overflow-wrap:anywhere;
+}
+
+.bot{
+  align-self:flex-start;
+  background:#142638;border:1px solid #25465a;
+  border-bottom-left-radius:4px;
+}
+
+.user{
+  align-self:flex-end;
+  background:#063d50;border:1px solid #08718a;
+  border-bottom-right-radius:4px;
+}
+
+.time{
+  display:block;font-size:10px;
+  color:#8299a9;margin-top:6px;
+}
+
+.suggestions{
+  display:flex;flex-wrap:wrap;gap:9px;
+  padding:0 25px 17px;
+}
+
+.suggestion{
+  padding:9px 13px;border-radius:20px;
+  border:1px solid #24556b;background:#102333;
+  color:#9defff;font-size:12px;cursor:pointer;
+  transition:.2s;
+}
+
+.suggestion:hover{background:#16465a;border-color:#00d9ef}
+
+.input-area{
+  padding:18px 22px;
+  border-top:1px solid #1b3445;
+  background:#0c1825;
+}
+
+.input-row{display:flex;gap:10px}
+
+input{
+  min-width:0;flex:1;padding:15px;
+  border-radius:11px;border:1px solid #25465a;
+  background:#101f2e;color:white;outline:none;
+  font-size:14px;
+}
+
+input:focus{border-color:#00d9ef}
+
+button{border:0;cursor:pointer;font-weight:bold}
+
+.send{
+  width:52px;border-radius:11px;
+  background:#00d9ef;color:#07131c;font-size:20px;
+}
+
+.send:hover{background:#70f0ff}
+
+.footer{
+  text-align:center;color:#61798b;
+  font-size:10px;margin-top:13px;
+}
+
+.footer a{color:#00d9ef;text-decoration:none}
+
+/* RTL SUPPORT */
+html[dir="rtl"] body,
+html[dir="rtl"] .app{
+  direction:rtl;
+}
+
+html[dir="rtl"] .brand,
+html[dir="rtl"] .header,
+html[dir="rtl"] .header-right{
+  direction:rtl;
+}
+
+html[dir="rtl"] .status i{
+  margin-right:0;
+  margin-left:6px;
+}
+
+html[dir="rtl"] .bot{
+  align-self:flex-start;
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:4px;
+}
+
+html[dir="rtl"] .user{
+  align-self:flex-end;
+  border-bottom-right-radius:15px;
+  border-bottom-left-radius:4px;
+}
+
+html[dir="rtl"] .input-row{
+  direction:rtl;
+}
+
+html[dir="rtl"] .message,
+html[dir="rtl"] input{
+  text-align:right;
+}
+
+html[lang="fa"] body,
+html[lang="fa"] button,
+html[lang="fa"] input,
+html[lang="fa"] select{
+  font-family:"Vazirmatn",Arial,sans-serif;
+}
+
+html[lang="fa"] .message{
+  line-height:2;
+}
+
+html[lang="fa"] .brand h1{
+  letter-spacing:0;
+}
+
+@media(max-width:500px){
+  body{padding:0}
+  .app{height:100vh;min-height:0;border-radius:0;border:0}
+  .header{padding:16px}
+  .header-right{gap:9px}
+  .chat{padding:18px}
+  .message{max-width:90%}
+  .suggestions{padding:0 18px 15px}
+  .brand h1{font-size:13px}
+  .brand p{font-size:10px}
+  .language-select{padding:7px 6px;font-size:11px}
+  .status{font-size:11px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="brand">
+      <div class="logo">N.</div>
+      <div>
+        <h1>NOVA AI SUPPORT</h1>
+        <p id="subtitle">Customer Support Assistant</p>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <select class="language-select" id="languageSelect" aria-label="Select language">
+        <option value="en">EN</option>
+        <option value="fa">فارسی</option>
+        <option value="ar">العربية</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+        <option value="zh">中文</option>
+      </select>
+
+      <div class="status"><i></i><span id="onlineText">Online</span></div>
+    </div>
+  </header>
+
+  <main class="chat" id="chat">
+    <div class="message bot" id="welcomeMessage">
+      Hello! Welcome to Nova AI Support.
+
+      I'm your virtual support assistant. How can I help you today?
+      <span class="time">Nova Assistant</span>
+    </div>
+  </main>
+
+  <div class="suggestions">
+    <button class="suggestion" data-question="services" id="suggestionServices">Our Services</button>
+    <button class="suggestion" data-question="website" id="suggestionWebsite">Request a Website</button>
+    <button class="suggestion" data-question="contact" id="suggestionContact">Contact Support</button>
+    <button class="suggestion" data-question="hours" id="suggestionHours">Working Hours</button>
+  </div>
+
+  <form class="input-area" id="chatForm">
+    <div class="input-row">
+      <input id="userInput" type="text" placeholder="Type your message..." autocomplete="off" required>
+      <button class="send" id="sendButton" type="submit" aria-label="Send message">➤</button>
+    </div>
+    <div class="footer" id="footerText">
+      Demo experience by <a href="index.html">Nova AI Studio</a>
+    </div>
+  </form>
+
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+const form = document.getElementById("chatForm");
+const input = document.getElementById("userInput");
+const languageSelect = document.getElementById("languageSelect");
+
+const translations = {
+  en:{
+    subtitle:"Customer Support Assistant",
+    online:"Online",
+    welcome:"Hello! Welcome to Nova AI Support.\n\nI'm your virtual support assistant. How can I help you today?",
+    suggestions:["Our Services","Request a Website","Contact Support","Working Hours"],
+    placeholder:"Type your message...",
+    send:"Send message",
+    footer:'Demo experience by <a href="index.html">Nova AI Studio</a>',
+    assistant:"Nova Assistant",
+    you:"You",
+    prompts:{
+      services:"What services do you offer?",
+      website:"How can I request a website?",
+      contact:"How can I contact your team?",
+      hours:"What are your working hours?"
+    },
+    answers:[
+      {keys:["service","services","offer"],reply:"Nova AI Studio offers three main services:\n\n✳ AI Tools & Prototypes\n⌘ Websites & Digital Experiences\n⟳ Workflow Automation\n\nWould you like to know more about one of them?"},
+      {keys:["website","web site","design"],reply:"We can help you create a modern, responsive website tailored to your needs.\n\nTo get started, visit the Contact section on our main website and send us your project details."},
+      {keys:["contact","email","support"],reply:"You can contact the Nova team through the Contact form on our main website:\n\nOpen the homepage and navigate to the Contact section. We'll review your message and get back to you."},
+      {keys:["hour","hours","time"],reply:"Nova AI Studio is an independent digital studio. Please use our Contact form to discuss project availability and response times."},
+      {keys:["price","pricing","cost","budget"],reply:"Project pricing depends on the features, complexity and requirements.\n\nSend us your project details through the Contact form to discuss your needs."},
+      {keys:["hello","hi","hey"],reply:"Hello! Welcome to Nova AI Studio. What can I help you with today?"},
+      {keys:["thank","thanks"],reply:"You're welcome! If you need anything else, I'm here to help."}
+    ],
+    fallback:"Thanks for your message!\n\nI don't have a specific answer for that question in this demo yet. Please contact our team through the Contact form on the Nova homepage."
+  },
+
+  fa:{
+    subtitle:"دستیار پشتیبانی مشتریان",
+    online:"آنلاین",
+    welcome:"سلام! به پشتیبانی Nova خوش آمدید.\n\nمن دستیار مجازی شما هستم. چطور می‌توانم کمکتان کنم؟",
+    suggestions:["خدمات ما","درخواست طراحی سایت","تماس با پشتیبانی","ساعات کاری"],
+    placeholder:"پیام خود را بنویسید...",
+    send:"ارسال پیام",
+    footer:'نسخه نمایشی توسط <a href="index.html">Nova AI Studio</a>',
+    assistant:"دستیار Nova",
+    you:"شما",
+    prompts:{
+      services:"چه خدماتی ارائه می‌دهید؟",
+      website:"چطور می‌توانم درخواست طراحی سایت بدهم؟",
+      contact:"چطور با تیم شما تماس بگیرم؟",
+      hours:"ساعات کاری شما چگونه است؟"
+    },
+    answers:[
+      {keys:["خدمات","سرویس","چه کار","ارائه می‌دهید"],reply:"Nova AI Studio سه خدمت اصلی ارائه می‌دهد:\n\n✳ ابزارها و نمونه‌های اولیه هوش مصنوعی\n⌘ طراحی وب‌سایت و تجربه‌های دیجیتال\n⟳ خودکارسازی فرایندهای کاری\n\nمایلید درباره کدام‌یک بیشتر بدانید؟"},
+      {keys:["سایت","وب‌سایت","طراحی وب","طراحی سایت"],reply:"ما می‌توانیم به شما در ساخت یک وب‌سایت مدرن، واکنش‌گرا و متناسب با نیازهایتان کمک کنیم.\n\nبرای شروع، به بخش تماس با ما در وب‌سایت اصلی مراجعه کنید و جزئیات پروژه خود را ارسال کنید."},
+      {keys:["تماس","ارتباط","ایمیل","پشتیبانی"],reply:"برای ارتباط با تیم Nova می‌توانید از فرم تماس در وب‌سایت اصلی استفاده کنید.\n\nوارد صفحه اصلی شوید و به بخش تماس با ما بروید. پیام شما بررسی می‌شود و در صورت امکان با شما ارتباط می‌گیریم."},
+      {keys:["ساعت","زمان","کاری","فعال"],reply:"Nova AI Studio یک استودیوی مستقل دیجیتال است. برای اطلاع از امکان‌پذیری پروژه و زمان پاسخ‌گویی، لطفاً از فرم تماس استفاده کنید."},
+      {keys:["قیمت","هزینه","تعرفه","بودجه"],reply:"هزینه پروژه به امکانات، پیچیدگی و نیازهای شما بستگی دارد.\n\nبرای بررسی نیازها و برآورد هزینه، جزئیات پروژه خود را از طریق فرم تماس ارسال کنید."},
+      {keys:["سلام","درود","خوبی"],reply:"سلام! به Nova AI Studio خوش آمدید. چطور می‌توانم کمکتان کنم؟"},
+      {keys:["ممنون","متشکرم","سپاس"],reply:"خواهش می‌کنم! اگر سؤال دیگری دارید، خوشحال می‌شویم راهنمایی‌تان کنیم."}
+    ],
+    fallback:"از پیام شما متشکریم!\n\nدر نسخه نمایشی فعلی پاسخ مشخصی برای این سؤال ندارم. لطفاً از طریق فرم تماس در صفحه اصلی Nova با تیم ما ارتباط بگیرید."
+  },
+
+  ar:{
+    subtitle:"مساعد دعم العملاء",
+    online:"متصل",
+    welcome:"مرحباً! أهلاً بك في دعم Nova.\n\nأنا مساعد الدعم الافتراضي الخاص بك. كيف يمكنني مساعدتك اليوم؟",
+    suggestions:["خدماتنا","طلب تصميم موقع","الاتصال بالدعم","ساعات العمل"],
+    placeholder:"اكتب رسالتك هنا...",
+    send:"إرسال الرسالة",
+    footer:'تجربة تجريبية بواسطة <a href="index.html">Nova AI Studio</a>',
+    assistant:"مساعد Nova",
+    you:"أنت",
+    prompts:{
+      services:"ما الخدمات التي تقدمونها؟",
+      website:"كيف يمكنني طلب تصميم موقع؟",
+      contact:"كيف يمكنني التواصل مع فريقكم؟",
+      hours:"ما هي ساعات العمل؟"
+    },
+    answers:[
+      {keys:["خدمات","الخدمات","تقدمون"],reply:"تقدم Nova AI Studio ثلاث خدمات رئيسية:\n\n✳ أدوات ونماذج أولية للذكاء الاصطناعي\n⌘ تصميم المواقع والتجارب الرقمية\n⟳ أتمتة سير العمل\n\nهل ترغب في معرفة المزيد عن إحدى هذه الخدمات؟"},
+      {keys:["موقع","الموقع","تصميم","ويب"],reply:"يمكننا مساعدتك في إنشاء موقع حديث ومتجاوب يناسب احتياجاتك.\n\nللبدء، انتقل إلى قسم التواصل في موقعنا الرئيسي وأرسل تفاصيل مشروعك."},
+      {keys:["اتصال","تواصل","بريد","دعم"],reply:"يمكنك التواصل مع فريق Nova من خلال نموذج الاتصال في موقعنا الرئيسي.\n\nافتح الصفحة الرئيسية وانتقل إلى قسم التواصل. سنراجع رسالتك ونتواصل معك."},
+      {keys:["ساعات","العمل","وقت"],reply:"Nova AI Studio استوديو رقمي مستقل. يرجى استخدام نموذج الاتصال لمناقشة توفر المشاريع وأوقات الاستجابة."},
+      {keys:["سعر","أسعار","تكلفة"],reply:"تعتمد تكلفة المشروع على الميزات والتعقيد والمتطلبات.\n\nأرسل تفاصيل مشروعك عبر نموذج الاتصال لمناقشة احتياجاتك."},
+      {keys:["مرحبا","مرحباً","السلام"],reply:"مرحباً بك في Nova AI Studio! كيف يمكنني مساعدتك اليوم؟"},
+      {keys:["شكرا","شكراً"],reply:"على الرحب والسعة! أنا هنا لمساعدتك إذا احتجت إلى أي شيء آخر."}
+    ],
+    fallback:"شكراً على رسالتك!\n\nلا أملك إجابة محددة لهذا السؤال في هذه النسخة التجريبية. يرجى التواصل مع فريقنا عبر نموذج الاتصال في الصفحة الرئيسية."
+  },
+
+  fr:{
+    subtitle:"Assistant du service client",
+    online:"En ligne",
+    welcome:"Bonjour ! Bienvenue chez Nova AI Support.\n\nJe suis votre assistant virtuel. Comment puis-je vous aider aujourd'hui ?",
+    suggestions:["Nos services","Demander un site web","Contacter le support","Horaires"],
+    placeholder:"Écrivez votre message...",
+    send:"Envoyer le message",
+    footer:'Démo proposée par <a href="index.html">Nova AI Studio</a>',
+    assistant:"Assistant Nova",
+    you:"Vous",
+    prompts:{
+      services:"Quels services proposez-vous ?",
+      website:"Comment demander un site web ?",
+      contact:"Comment contacter votre équipe ?",
+      hours:"Quels sont vos horaires ?"
+    },
+    answers:[
+      {keys:["service","services","offrez"],reply:"Nova AI Studio propose trois services principaux :\n\n✳ Outils et prototypes d'IA\n⌘ Sites web et expériences numériques\n⟳ Automatisation des processus\n\nSouhaitez-vous en savoir plus sur l'un d'eux ?"},
+      {keys:["site","website","web","design"],reply:"Nous pouvons vous aider à créer un site web moderne, responsive et adapté à vos besoins.\n\nPour commencer, rendez-vous dans la section Contact de notre site principal et envoyez-nous les détails de votre projet."},
+      {keys:["contact","email","support","équipe"],reply:"Vous pouvez contacter l'équipe Nova via le formulaire de contact de notre site principal.\n\nOuvrez la page d'accueil et accédez à la section Contact. Nous examinerons votre message."},
+      {keys:["horaire","horaires","heure"],reply:"Nova AI Studio est un studio numérique indépendant. Veuillez utiliser notre formulaire de contact pour discuter de la disponibilité des projets et des délais de réponse."},
+      {keys:["prix","tarif","coût","budget"],reply:"Le prix d'un projet dépend des fonctionnalités, de sa complexité et de vos besoins.\n\nEnvoyez les détails de votre projet via le formulaire de contact."},
+      {keys:["bonjour","salut","hello"],reply:"Bonjour ! Bienvenue chez Nova AI Studio. Comment puis-je vous aider ?"},
+      {keys:["merci"],reply:"Avec plaisir ! Je suis là si vous avez besoin d'autre chose."}
+    ],
+    fallback:"Merci pour votre message !\n\nJe n'ai pas encore de réponse précise à cette question dans cette démo. Veuillez contacter notre équipe via le formulaire de contact de la page d'accueil."
+  },
+
+  de:{
+    subtitle:"Kundenservice-Assistent",
+    online:"Online",
+    welcome:"Hallo! Willkommen beim Nova AI Support.\n\nIch bin Ihr virtueller Support-Assistent. Wie kann ich Ihnen heute helfen?",
+    suggestions:["Unsere Leistungen","Website anfragen","Support kontaktieren","Öffnungszeiten"],
+    placeholder:"Nachricht eingeben...",
+    send:"Nachricht senden",
+    footer:'Demo von <a href="index.html">Nova AI Studio</a>',
+    assistant:"Nova Assistent",
+    you:"Sie",
+    prompts:{
+      services:"Welche Dienstleistungen bieten Sie an?",
+      website:"Wie kann ich eine Website anfragen?",
+      contact:"Wie kann ich Ihr Team kontaktieren?",
+      hours:"Wie sind Ihre Arbeitszeiten?"
+    },
+    answers:[
+      {keys:["service","services","leistungen","angebot"],reply:"Nova AI Studio bietet drei Hauptleistungen:\n\n✳ KI-Tools und Prototypen\n⌘ Websites und digitale Erlebnisse\n⟳ Workflow-Automatisierung\n\nMöchten Sie mehr über eine dieser Leistungen erfahren?"},
+      {keys:["website","webseite","website","design"],reply:"Wir helfen Ihnen gerne dabei, eine moderne und responsive Website zu erstellen, die auf Ihre Bedürfnisse zugeschnitten ist.\n\nBesuchen Sie dazu den Kontaktbereich unserer Hauptwebsite und senden Sie uns Ihre Projektdetails."},
+      {keys:["kontakt","contact","email","support"],reply:"Sie können das Nova-Team über das Kontaktformular auf unserer Hauptwebsite erreichen.\n\nÖffnen Sie die Startseite und gehen Sie zum Kontaktbereich."},
+      {keys:["stunden","arbeitszeit","öffnungszeit","zeit"],reply:"Nova AI Studio ist ein unabhängiges Digitalstudio. Bitte nutzen Sie unser Kontaktformular, um Projektverfügbarkeit und Antwortzeiten zu besprechen."},
+      {keys:["preis","kosten","budget"],reply:"Die Projektkosten hängen von den Funktionen, der Komplexität und Ihren Anforderungen ab.\n\nSenden Sie uns Ihre Projektdetails über das Kontaktformular."},
+      {keys:["hallo","guten tag","hi"],reply:"Hallo! Willkommen bei Nova AI Studio. Wie kann ich Ihnen helfen?"},
+      {keys:["danke","vielen dank"],reply:"Gern geschehen! Wenn Sie weitere Fragen haben, helfe ich Ihnen gerne."}
+    ],
+    fallback:"Vielen Dank für Ihre Nachricht!\n\nFür diese Frage habe ich in dieser Demo noch keine konkrete Antwort. Bitte kontaktieren Sie unser Team über das Kontaktformular auf der Nova-Startseite."
+  },
+
+  zh:{
+    subtitle:"客户支持助手",
+    online:"在线",
+    welcome:"您好！欢迎来到 Nova 客服中心。\n\n我是您的虚拟客服助手。今天有什么可以帮您？",
+    suggestions:["我们的服务","申请网站设计","联系支持团队","工作时间"],
+    placeholder:"请输入您的消息...",
+    send:"发送消息",
+    footer:'演示体验由 <a href="index.html">Nova AI Studio</a> 提供',
+    assistant:"Nova 助手",
+    you:"您",
+    prompts:{
+      services:"你们提供哪些服务？",
+      website:"如何申请网站设计？",
+      contact:"如何联系你们的团队？",
+      hours:"你们的工作时间是什么？"
+    },
+    answers:[
+      {keys:["服务","业务","提供"],reply:"Nova AI Studio 提供三项主要服务：\n\n✳ AI 工具与原型开发\n⌘ 网站与数字体验设计\n⟳ 工作流程自动化\n\n您想了解其中哪项服务的更多信息？"},
+      {keys:["网站","网页","设计"],reply:"我们可以帮助您创建现代化、响应式且符合您需求的网站。\n\n如需开始，请访问我们主网站的联系页面并发送您的项目详情。"},
+      {keys:["联系","邮箱","支持","团队"],reply:"您可以通过我们主网站上的联系表单联系 Nova 团队。\n\n打开主页并进入联系部分，我们会查看您的消息。"},
+      {keys:["时间","工作","小时"],reply:"Nova AI Studio 是一家独立数字工作室。请通过联系表单咨询项目安排和回复时间。"},
+      {keys:["价格","费用","预算"],reply:"项目价格取决于功能、复杂程度和具体需求。\n\n请通过联系表单发送项目详情，以便讨论您的需求。"},
+      {keys:["你好","您好","嗨"],reply:"您好！欢迎来到 Nova AI Studio。今天有什么可以帮您？"},
+      {keys:["谢谢","感谢"],reply:"不客气！如果您还有其他问题，我很乐意为您提供帮助。"}
+    ],
+    fallback:"感谢您的消息！\n\n此演示版本暂时没有这个问题的具体答案。请通过 Nova 主页上的联系表单与我们的团队联系。"
+  }
+};
+
+let currentLanguage = "en";
+
+function getSavedLanguage(){
+  try{
+    const saved = localStorage.getItem("nova-language");
+    return translations[saved] ? saved : "en";
+  }catch(error){
+    return "en";
+  }
+}
+
+function setLanguage(language){
+  if(!translations[language]) language = "en";
+
+  currentLanguage = language;
+
+  const t = translations[language];
+  const rtl = language === "fa" || language === "ar";
+
+  document.documentElement.lang = language;
+  document.documentElement.dir = rtl ? "rtl" : "ltr";
+
+  languageSelect.value = language;
+
+  document.getElementById("subtitle").textContent = t.subtitle;
+  document.getElementById("onlineText").textContent = t.online;
+  document.getElementById("welcomeMessage").innerHTML =
+    escapeHTML(t.welcome) +
+    '<span class="time">' + escapeHTML(t.assistant) + '</span>';
+
+  document.getElementById("suggestionServices").textContent = t.suggestions[0];
+  document.getElementById("suggestionWebsite").textContent = t.suggestions[1];
+  document.getElementById("suggestionContact").textContent = t.suggestions[2];
+  document.getElementById("suggestionHours").textContent = t.suggestions[3];
+
+  input.placeholder = t.placeholder;
+  document.getElementById("sendButton").setAttribute("aria-label",t.send);
+  document.getElementById("footerText").innerHTML = t.footer;
+
+  chat.scrollTop = 0;
+
+  try{
+    localStorage.setItem("nova-language",language);
+  }catch(error){
+    // Local storage may be unavailable.
+  }
+}
+
+function escapeHTML(text){
+  return text.replace(/[&<>"']/g,function(character){
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[character];
+  });
+}
+
+function addMessage(text,type){
+  const message = document.createElement("div");
+  message.className = "message " + type;
+  message.appendChild(document.createTextNode(text));
+
+  const time = document.createElement("span");
+  time.className = "time";
+
+  const t = translations[currentLanguage];
+  time.textContent = type === "bot" ? t.assistant : t.you;
+
+  message.appendChild(time);
+  chat.appendChild(message);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function getAnswer(text){
+  const normalized = text.toLowerCase();
+  const t = translations[currentLanguage];
+
+  for(const item of t.answers){
+    if(item.keys.some(key=>normalized.includes(key.toLowerCase()))){
+      return item.reply;
+    }
+  }
+
+  return t.fallback;
+}
+
+function sendMessage(text){
+  const value = text.trim();
+  if(!value) return;
+
+  addMessage(value,"user");
+  input.value = "";
+
+  setTimeout(()=>{
+    addMessage(getAnswer(value),"bot");
+  },450);
+}
+
+form.addEventListener("submit",event=>{
+  event.preventDefault();
+  sendMessage(input.value);
+});
+
+document.querySelectorAll(".suggestion").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const key = button.dataset.question;
+    sendMessage(translations[currentLanguage].prompts[key]);
+  });
+});
+
+languageSelect.addEventListener("change",()=>{
+  setLanguage(languageSelect.value);
+});
+
+setLanguage(getSavedLanguage());
+</script>
+</body>
+</html>
