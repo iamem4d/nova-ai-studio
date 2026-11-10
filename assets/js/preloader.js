@@ -284,9 +284,6 @@ async function prepareVideo(blob) {
   finishPreloader();
 }
 
-    requestAnimationFrame(updateProgress);
-  }
-
 function finishPreloader() {
   if (finished) return;
 
