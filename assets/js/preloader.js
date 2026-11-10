@@ -329,12 +329,8 @@ function finishPreloader() {
   // Lock scrolling while loading.
   document.body.classList.add("nova-loading-active");
 
-  // Request automatic buffering.
-  video.preload = "auto";
-
-  video.addEventListener("progress", () => {});
-  video.addEventListener("loadedmetadata", () => {});
-  video.addEventListener("error", handleVideoError);
+// Handle video errors.
+video.addEventListener("error", handleVideoError);
 
   // Show a manual fallback if loading takes too long.
   setTimeout(() => {
