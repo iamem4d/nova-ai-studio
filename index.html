@@ -29,6 +29,47 @@
   <script src="assets/js/cinematic.js" defer></script>
 </head>
 <body>
+  <div id="novaPreloader" class="nova-preloader" role="status" aria-live="polite">
+  <div class="nova-preloader-content">
+
+    <img
+      class="nova-preloader-logo"
+      src="assets/images/nova-symbol-silver.png"
+      alt="NOVA AI STUDIO"
+    >
+
+    <div id="novaPreloaderLabel" class="nova-preloader-word">
+      LOADING
+    </div>
+
+    <div class="nova-preloader-progress">
+      <div id="novaPreloaderBar"></div>
+    </div>
+
+    <div class="nova-preloader-percent">
+      <span id="novaPreloaderPercent">0</span>%
+    </div>
+
+    <div class="nova-preloader-message">
+      <p id="novaPreloaderMessage"></p>
+      <p id="novaPreloaderSubmessage"></p>
+    </div>
+
+    <select id="novaPreloaderLanguage" aria-label="Select language">
+      <option value="en">EN</option>
+      <option value="fa">فارسی</option>
+      <option value="ar">العربية</option>
+      <option value="fr">FR</option>
+      <option value="de">DE</option>
+      <option value="zh">中文</option>
+    </select>
+
+    <button id="novaPreloaderContinue" type="button" hidden>
+      Continue anyway
+    </button>
+
+  </div>
+</div>
   <canvas id="nova-cinematic-canvas" aria-hidden="true"></canvas>
   <div class="cinematic-grain" aria-hidden="true"></div>
   <div class="page-glow page-glow-one"></div>
