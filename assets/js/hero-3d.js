@@ -183,22 +183,24 @@ function initHero3D() {
       mouseY = 0;
     });
 
-    // SCROLL INTERACTION
-    function updateScrollProgress() {
-      const rect = hero.getBoundingClientRect();
+// SCROLL INTERACTION
+function updateScrollProgress() {
+  const rect = hero.getBoundingClientRect();
 
-      const progress =
-        (window.innerHeight - rect.top) /
-        (window.innerHeight + rect.height);
+  const progress =
+    (window.innerHeight - rect.top) /
+    (window.innerHeight + rect.height);
 
-      scrollProgress = Math.max(0, Math.min(1, progress));
-    }
+  scrollProgress = Math.max(0, Math.min(1, progress));
+}
 
-    window.addEventListener("scroll", updateScrollProgress, {
-      passive: true
-    });
+window.addEventListener("scroll", updateScrollProgress, {
+  passive: true
+});
 
-    updateScrollProgress();
+window.addEventListener("resize", updateScrollProgress);
+
+updateScrollProgress();
 
     // RESPONSIVE SIZE
     function resize() {
@@ -233,7 +235,7 @@ function initHero3D() {
       currentMouseY += (mouseY - currentMouseY) * 0.045;
 
       // Smooth scroll movement
-      currentScroll += (scrollProgress - currentScroll) * 0.035;
+      currentScroll += (scrollProgress - currentScroll) * 0.08;
 
       // Natural rotation
       objectGroup.rotation.y += 0.002;
