@@ -287,27 +287,21 @@ async function prepareVideo(blob) {
     requestAnimationFrame(updateProgress);
   }
 
-  function finishPreloader() {
-    if (finished) return;
+function finishPreloader() {
+  if (finished) return;
 
-    finished = true;
+  finished = true;
 
-    clearInterval(messageTimer);
+  clearInterval(messageTimer);
 
-    percent.textContent = new Intl.NumberFormat(
-      locales[currentLanguage]
-    ).format(100);
+  preloader.classList.add("is-hidden");
+  preloader.setAttribute("aria-hidden", "true");
 
-    bar.style.width = "100%";
-
-    preloader.classList.add("is-hidden");
-    preloader.setAttribute("aria-hidden", "true");
-
-    setTimeout(() => {
-      document.body.classList.remove("nova-loading-active");
-      preloader.remove();
-    }, 900);
-  }
+  setTimeout(() => {
+    document.body.classList.remove("nova-loading-active");
+    preloader.remove();
+  }, 900);
+}
 
   function showContinueButton() {
     continueButton.hidden = false;
