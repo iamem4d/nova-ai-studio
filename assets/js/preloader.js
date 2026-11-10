@@ -200,9 +200,10 @@ async function downloadFullVideo() {
   try {
     const source = video.querySelector("source");
 
-    const videoUrl = source
-      ? source.src
-      : video.currentSrc || video.src;
+const videoUrl = new URL(
+  source ? source.getAttribute("src") : video.src,
+  document.baseURI
+).href;
 
     const response = await fetch(videoUrl, {
       cache: "force-cache"
