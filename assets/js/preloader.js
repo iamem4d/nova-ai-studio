@@ -263,6 +263,7 @@ const videoUrl = new URL(
 async function prepareVideo(blob) {
   downloadObjectUrl = URL.createObjectURL(blob);
 
+video.removeAttribute("src");
   video.src = downloadObjectUrl;
   video.load();
 
