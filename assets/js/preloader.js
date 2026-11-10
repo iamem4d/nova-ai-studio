@@ -113,6 +113,8 @@
   let messageTimer = null;
   let finished = false;
   let videoFailed = false;
+   let downloadObjectUrl = null;
+let downloadStarted = false;
 
   function getSavedLanguage() {
     try {
