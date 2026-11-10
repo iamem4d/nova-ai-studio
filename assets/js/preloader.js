@@ -340,11 +340,7 @@ video.addEventListener("error", handleVideoError);
   renderMessage(0);
   rotateMessages();
 
-  // Start tracking actual buffered video data.
-  requestAnimationFrame(updateProgress);
-
-  if (video.networkState === HTMLMediaElement.NETWORK_EMPTY) {
-    video.load();
-  }
+// Download the complete cinematic video.
+downloadFullVideo();
 
 })();
