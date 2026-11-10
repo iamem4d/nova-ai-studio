@@ -3,9 +3,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.m
 
 const hero = document.querySelector(".hero-visual");
 
-if (hero && !window.matchMedia("(max-width: 600px)").matches) {
-  initHero3D();
-} else if (hero) {
+if (hero) {
   initHero3D();
 }
 
@@ -16,12 +14,7 @@ function initHero3D() {
   try {
     const scene = new THREE.Scene();
 
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      1,
-      0.1,
-      100
-    );
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
     camera.position.z = 5;
 
     const renderer = new THREE.WebGLRenderer({
@@ -46,8 +39,7 @@ function initHero3D() {
       pointerEvents: "none"
     });
 
-    const computedPosition = getComputedStyle(hero).position;
-    if (computedPosition === "static") {
+    if (getComputedStyle(hero).position === "static") {
       hero.style.position = "relative";
     }
 
@@ -62,7 +54,7 @@ function initHero3D() {
       }
     });
 
-    // Lighting
+    // LIGHTING
     scene.add(new THREE.AmbientLight(0xffffff, 1.5));
 
     const mainLight = new THREE.DirectionalLight(0xffffff, 3);
@@ -73,7 +65,7 @@ function initHero3D() {
     sideLight.position.set(-3, -2, 3);
     scene.add(sideLight);
 
-    // Main 3D object
+    // MAIN 3D OBJECT
     const objectGroup = new THREE.Group();
     scene.add(objectGroup);
 
@@ -91,7 +83,7 @@ function initHero3D() {
     const core = new THREE.Mesh(geometry, material);
     objectGroup.add(core);
 
-    // Wireframe layer
+    // WIREFRAME
     const wireframe = new THREE.LineSegments(
       new THREE.EdgesGeometry(geometry),
       new THREE.LineBasicMaterial({
@@ -103,7 +95,7 @@ function initHero3D() {
 
     objectGroup.add(wireframe);
 
-    // Orbital rings
+    // ORBITAL RINGS
     const ringMaterial = new THREE.MeshStandardMaterial({
       color: 0xbdbdbd,
       metalness: 0.9,
@@ -131,7 +123,7 @@ function initHero3D() {
 
     objectGroup.add(ring1, ring2, ring3);
 
-    // Floating particles
+    // FLOATING PARTICLES
     const particlePositions = [];
 
     for (let i = 0; i < 180; i++) {
@@ -161,15 +153,29 @@ function initHero3D() {
 
     scene.add(particles);
 
-    // Mouse interaction
+    // INTERACTION STATE
     let mouseX = 0;
     let mouseY = 0;
 
+    let currentMouseX = 0;
+    let currentMouseY = 0;
+
+    let scrollProgress = 0;
+    let currentScroll = 0;
+
+    let animationId = null;
+    let isVisible = true;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // MOUSE INTERACTION
     hero.addEventListener("pointermove", (event) => {
       const rect = hero.getBoundingClientRect();
 
-      mouseX = ((event.clientX - rect.left) / rect.width - 0.5) * 0.5;
-      mouseY = ((event.clientY - rect.top) / rect.height - 0.5) * 0.5;
+      mouseX = ((event.clientX - rect.left) / rect.width - 0.5) * 0.8;
+      mouseY = ((event.clientY - rect.top) / rect.height - 0.5) * 0.8;
     });
 
     hero.addEventListener("pointerleave", () => {
@@ -177,7 +183,24 @@ function initHero3D() {
       mouseY = 0;
     });
 
-    // Responsive sizing
+    // SCROLL INTERACTION
+    function updateScrollProgress() {
+      const rect = hero.getBoundingClientRect();
+
+      const progress =
+        (window.innerHeight - rect.top) /
+        (window.innerHeight + rect.height);
+
+      scrollProgress = Math.max(0, Math.min(1, progress));
+    }
+
+    window.addEventListener("scroll", updateScrollProgress, {
+      passive: true
+    });
+
+    updateScrollProgress();
+
+    // RESPONSIVE SIZE
     function resize() {
       const width = hero.clientWidth;
       const height = hero.clientHeight;
@@ -192,22 +215,61 @@ function initHero3D() {
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(hero);
+
+    window.addEventListener("resize", resize);
     resize();
 
-    // Animation
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    // ANIMATION
+    function animate() {
+      if (!isVisible || reducedMotion) {
+        animationId = null;
+        return;
+      }
 
-    let animationId;
-    let isVisible = true;
+      animationId = requestAnimationFrame(animate);
 
+      // Smooth mouse movement
+      currentMouseX += (mouseX - currentMouseX) * 0.045;
+      currentMouseY += (mouseY - currentMouseY) * 0.045;
+
+      // Smooth scroll movement
+      currentScroll += (scrollProgress - currentScroll) * 0.035;
+
+      // Natural rotation
+      objectGroup.rotation.y += 0.002;
+      objectGroup.rotation.x += 0.001;
+
+      // Mouse-based rotation
+      objectGroup.rotation.y += currentMouseX * 0.002;
+      objectGroup.rotation.x += currentMouseY * 0.002;
+
+      // Scroll-based rotation
+      objectGroup.rotation.y += currentScroll * 0.0015;
+      objectGroup.rotation.x += currentScroll * 0.001;
+
+      // Subtle vertical movement
+      objectGroup.position.y =
+        Math.sin(currentScroll * Math.PI) * 0.12;
+
+      // Orbital animation
+      ring1.rotation.z += 0.001;
+      ring2.rotation.x += 0.0008;
+      ring3.rotation.y += 0.0006;
+
+      // Particle movement
+      particles.rotation.y += 0.0003;
+      particles.rotation.x += 0.0001;
+
+      renderer.render(scene, camera);
+    }
+
+    // VISIBILITY OPTIMIZATION
     const visibilityObserver = new IntersectionObserver((entries) => {
       isVisible = entries[0].isIntersecting;
 
-      if (isVisible && !reducedMotion && !animationId) {
+      if (isVisible && !reducedMotion && animationId === null) {
         animate();
-      } else if (!isVisible && animationId) {
+      } else if (!isVisible && animationId !== null) {
         cancelAnimationFrame(animationId);
         animationId = null;
       }
@@ -215,43 +277,35 @@ function initHero3D() {
 
     visibilityObserver.observe(hero);
 
-    function animate() {
-      if (!isVisible || reducedMotion) return;
-
-      animationId = requestAnimationFrame(animate);
-
-      objectGroup.rotation.y += 0.002;
-      objectGroup.rotation.x += 0.001;
-
-      objectGroup.rotation.y +=
-        (mouseX * 0.3 - objectGroup.rotation.y * 0.05) * 0.002;
-
-      objectGroup.rotation.x +=
-        (mouseY * 0.3 - objectGroup.rotation.x * 0.05) * 0.002;
-
-      ring1.rotation.z += 0.001;
-      ring2.rotation.x += 0.0008;
-      ring3.rotation.y += 0.0006;
-
-      particles.rotation.y += 0.0003;
-
-      renderer.render(scene, camera);
-    }
-
     renderer.render(scene, camera);
 
     if (!reducedMotion) {
       animate();
     }
 
-    window.addEventListener("beforeunload", () => {
-      cancelAnimationFrame(animationId);
+    // CLEANUP
+    window.addEventListener("pagehide", () => {
+      if (animationId !== null) {
+        cancelAnimationFrame(animationId);
+      }
+
       resizeObserver.disconnect();
       visibilityObserver.disconnect();
-      renderer.dispose();
+
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("scroll", updateScrollProgress);
+
       geometry.dispose();
+      wireframe.geometry.dispose();
       material.dispose();
-    });
+      wireframe.material.dispose();
+      ringMaterial.dispose();
+
+      particleGeometry.dispose();
+      particles.material.dispose();
+
+      renderer.dispose();
+    }, { once: true });
 
   } catch (error) {
     console.warn("Nova 3D scene could not initialize:", error);
