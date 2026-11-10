@@ -59,20 +59,9 @@ function initCinematicExperience() {
       return wire;
     }
 
-    // CHAPTER 00 — the Nova core
-    const heroScene = new THREE.Group();
-    world.add(heroScene);
-    const heroCore = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.05, 3),
-      makeMaterial(0xc9c9c9, 0.92, 0.18)
-    );
-    heroScene.add(heroCore);
-    addWireSphere(heroScene, 1.12, 2, 0xffffff, 0.38);
-    const heroRingA = new THREE.Mesh(new THREE.TorusGeometry(1.65, 0.012, 12, 180), makeMaterial(0xdddddd));
-    const heroRingB = new THREE.Mesh(new THREE.TorusGeometry(1.95, 0.006, 8, 180), makeMaterial(0x888888));
-    heroRingA.rotation.set(1.1, 0.25, 0.2);
-    heroRingB.rotation.set(0.35, 1.1, 0.65);
-    heroScene.add(heroRingA, heroRingB);
+// CHAPTER 00 — clean cinematic opening
+const heroScene = new THREE.Group();
+world.add(heroScene);
 
     // CHAPTER 01 — connected systems
     const serviceScene = new THREE.Group();
