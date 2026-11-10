@@ -245,13 +245,16 @@ updateScrollProgress();
 objectGroup.rotation.y = Math.sin(Date.now() * 0.001) * 0.15 + currentMouseX * 0.35;
 objectGroup.rotation.x = Math.cos(Date.now() * 0.001) * 0.08 + currentMouseY * 0.35;
 
-      // Scroll-based rotation
-      objectGroup.rotation.y += currentScroll * 0.0015;
-      objectGroup.rotation.x += currentScroll * 0.001;
+// Scroll-based movement
+objectGroup.rotation.y += currentScroll * 0.012;
+objectGroup.rotation.x += currentScroll * 0.008;
 
-      // Subtle vertical movement
-      objectGroup.position.y =
-        Math.sin(currentScroll * Math.PI) * 0.12;
+objectGroup.position.y =
+  Math.sin(currentScroll * Math.PI) * 0.35;
+
+objectGroup.scale.setScalar(
+  1 + Math.sin(currentScroll * Math.PI) * 0.08
+);
 
       // Orbital animation
       ring1.rotation.z += 0.001;
