@@ -1,0 +1,180 @@
+/* =========================================
+   NOVA AI STUDIO — CINEMATIC PRELOADER
+========================================= */
+
+.nova-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050505;
+  color: #fff;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .85s ease, visibility .85s ease;
+}
+
+body.nova-loading-active {
+  overflow: hidden;
+}
+
+.nova-preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.nova-preloader-content {
+  width: min(88%, 420px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.nova-preloader-logo {
+  width: clamp(65px, 9vw, 100px);
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 0 25px #ffffff20);
+  animation: novaLogoReveal 1.2s ease both;
+}
+
+.nova-preloader-word {
+  font-family: var(--display, "Space Grotesk", sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.3px;
+  color: #f5f5f5;
+  margin-bottom: 34px;
+}
+
+.nova-preloader-progress {
+  width: min(100%, 300px);
+  height: 2px;
+  background: #ffffff18;
+  overflow: hidden;
+  position: relative;
+}
+
+#novaPreloaderBar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #777, #fff);
+  box-shadow: 0 0 12px #ffffff65;
+  transition: width .25s ease;
+}
+
+.nova-preloader-percent {
+  width: min(100%, 300px);
+  margin-top: 12px;
+  text-align: right;
+  color: #999;
+  font: 10px var(--display, sans-serif);
+  letter-spacing: 1px;
+}
+
+.nova-preloader-message {
+  min-height: 78px;
+  margin-top: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.nova-preloader-message.is-changing {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.nova-preloader-message p {
+  margin: 0;
+  color: #d6d6d6;
+  font-family: var(--font, Inter, sans-serif);
+  font-size: 12px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+.nova-preloader-message p + p {
+  color: #777;
+  font-size: 11px;
+}
+
+#novaPreloaderLanguage {
+  margin-top: 30px;
+  padding: 8px 13px;
+  border: 1px solid #ffffff2b;
+  border-radius: 7px;
+  background: #101010;
+  color: #ddd;
+  font: 11px var(--font, sans-serif);
+  outline: none;
+  cursor: pointer;
+}
+
+#novaPreloaderLanguage option {
+  background: #101010;
+  color: #fff;
+}
+
+#novaPreloaderContinue {
+  margin-top: 22px;
+  padding: 10px 18px;
+  border: 1px solid #ffffff55;
+  border-radius: 7px;
+  background: transparent;
+  color: #fff;
+  font: 11px var(--font, sans-serif);
+  cursor: pointer;
+}
+
+#novaPreloaderContinue:hover {
+  background: #fff;
+  color: #050505;
+}
+
+#novaPreloaderContinue[hidden] {
+  display: none;
+}
+
+@keyframes novaLogoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(.94);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .nova-preloader-logo {
+    width: 76px;
+    margin-bottom: 22px;
+  }
+
+  .nova-preloader-message {
+    margin-top: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-preloader,
+  .nova-preloader-message,
+  #novaPreloaderBar {
+    transition: none;
+  }
+
+  .nova-preloader-logo {
+    animation: none;
+  }
+}
