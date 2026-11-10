@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://iamem4d.github.io/nova-ai-studio/sitemap.xml
